@@ -1,0 +1,50 @@
+/* Base styles that apply to all menus */
+.menu-section {
+	padding-bottom: 2em;
+	margin-bottom: 2em;
+	border-bottom: 1px solid hsl(0, 0%, );
+}
+
+.menu ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	background: hsl(0, 0%, 15%);
+}
+
+.menu li a {
+	display: block;
+	text-decoration: none;
+	color: white;
+	padding: .6em 1em;
+}
+
+.menu li a:hover {
+	background: hsl(0, 0%, 25%);
+}
+
+/*custom JD */
+.menu-toggle {
+    display: block;
+    width: 100%;
+    margin: 0 1.2em 0 0;/*1.2em was the original top*/
+    padding: .6em .8em;
+    font-size: 80%;
+    text-transform: uppercase;
+    color: white;
+    background-color: #22262a;
+    border: none;
+    border-radius: 0;
+}
+
+.menu-section {
+	opacity: 0.9;
+}
+@media screen and (min-width: 61.875em){
+	.menu-section {
+		opacity: 0.8;
+	}
+	.menu-toggle {
+	    display: none;
+	}
+}

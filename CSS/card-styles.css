@@ -1,0 +1,237 @@
+/* Card Based Layout - Base styles */
+
+body {
+	/*background: hsl(0, 0%, 90%);* commneted JD*/
+}
+/*
+.masthead {
+	background: hsl(0, 0%, 20%);
+}
+*/
+
+.site-title {
+	color: white;
+}
+
+.card, .card-2col, .card-choice, .card-1col {
+	background: white;
+	margin-bottom: 2em;	
+}
+/*
+.card-1col{
+  min-width: 100%;
+}
+*/
+.card a, .card-2col a, .card-choice a, .card-1col a {
+	color: black;
+	text-decoration: none;
+}
+
+.card a:hover, .card-2col a:hover, .card-choice a:hover, ul.hs li:hover {
+	box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
+}
+
+.card-1col a:hover{
+  box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
+}
+
+ul.hs li:hover{
+  cursor: pointer;
+}
+
+.card-content, .card-2col-content, .card-choice-content, .card-1col-content {
+	padding: 1.4em;
+}
+
+
+.card-content h2, .card-2col-content h2, .card-choice-content h2,.card-1col-content h2 {
+	margin-top: 0;
+	margin-bottom: .5em;
+	font-weight: normal;
+}
+
+.card-content p, .card-2col-content p, .card-choice-content p, .card-1col-content p, .card-1col-content p {
+	font-size: 95%;
+}
+
+/* Flexbox stuff */
+
+    .card-2col-stick{
+      flex: 0 0 calc(50%);
+       background-color: white
+
+    }
+@media screen and (min-width: 40em) {
+    .cards, .cards-2col, .cards-choice {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: -1em;
+    }
+
+    .card, .card-2col, .card-choice {
+        display: flex;
+        flex: 0 1 calc(50% - .5em);
+        margin-bottom: 1em;
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .cards {
+        margin-top: inherit;
+    }
+    
+    .card {
+        flex: 0 1 calc(33% - 1em);
+        margin-bottom: 2em;
+    }
+
+    .card-2col{
+        flex: 0 1 calc(50% - 0.5em);
+        margin-bottom: 2em;
+    }
+
+
+    .card-1col {
+        flex: 0 1 calc(100% - 0.5em);
+        margin-bottom: 2em;
+    }
+
+    .card-choice{
+        flex: 0 1 calc(25% - 0.5em);
+        margin-bottom: 2em;
+    }
+}
+
+/*customize JD */
+.subtype-init{
+    max-height: 2.5em;
+    overflow-y: hidden;
+    /*transition: max-height 2s ease-in;*/
+}
+.subtype-full{
+    max-height: auto;
+    /*transition: max-height 3s ease-out;*/
+}
+
+section.cards, section.cards-2col, section.cards-choice {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+body{
+    background-image: url(../images/banner-mobile-v2.png);
+    /* background: hsl(0, 0%, 90%); */
+    background-color: hsl(0, 0%, 90%);
+    background-repeat: no-repeat;
+}
+
+
+@media screen and (min-width: 30em){
+    body{
+        background-image: url(../images/desktop-banner-v2.png);
+    }
+}
+
+/*let's have the horizontal scroll cards here */
+:root {
+  --gutter: 20px;/*used to be 20px*/
+}
+
+.app {
+  padding: var(--gutter) 0;
+  display: grid;
+  grid-gap: var(--gutter) 0;
+  grid-template-columns: var(--gutter) 1fr var(--gutter);
+  align-content: start;
+}
+
+.app > * {
+  grid-column: 2 / -2;
+}
+
+.app > .full {
+  grid-column: 1 / -1;
+}
+
+.hs {
+  display: grid;
+  grid-gap: calc(var(--gutter) / 2);
+  grid-template-columns: repeat(6, calc(90% - var(--gutter) * 2));
+  grid-template-rows: minmax(150px, 1fr);
+  
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+  padding-bottom: calc(.75 * var(--gutter));
+  margin-bottom: calc(-.25 * var(--gutter));
+  padding: 0;
+  padding-bottom: 0.12em;
+}
+
+@media screen and (min-width: 60em){
+    .hs{
+        grid-template-columns: repeat(6, calc(50% - var(--gutter) * 2));
+    }
+
+
+    
+}
+
+
+/* Demo styles */
+/*
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background: #456173;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+*/
+.app {
+  width: 100%;
+  min-height: 400px;
+  /*background: #DBD0BC;
+  overflow-y: scroll;*/
+}
+
+.hs > li,
+.item {
+  scroll-snap-align: center;
+  /*padding: calc(var(--gutter) / 2 * 1.5);*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.hs a{
+    text-decoration: none;
+    color: black;
+}
+
+#lead-card h3{
+  padding: 1em 1em 0 1em;
+  margin: 0;
+}
+
+#lead-card div{
+  padding: 0.5em 1em 0 1em;
+}
+

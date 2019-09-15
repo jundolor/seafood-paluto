@@ -1,0 +1,202 @@
+/*--------------------------------------------------------------
+Layouts
+--------------------------------------------------------------*/
+
+.centered {
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+@media screen and (min-width: 52em) {
+    .centered {
+        max-width: 64em; /*used to be 2em JD */
+    }
+
+    .main-area{
+		min-height: 750px;
+	}
+    
+/*
+    footer{
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+	}
+	*/
+}
+
+/*custom JD */
+blockquote{
+	font-size: 1.5em;
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+}
+
+.footer-area {
+	background: hsl(0, 0%, 15%);
+	font-size: 0.8em;
+}
+.footer-area p{
+	color: white;
+	margin: 0.3em;
+	padding: 0.3em 0.3em;
+}
+.footer-area .centered{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-width: 80em;
+}
+
+/*custom form will go here*/
+.inline-img{
+	display: inline;
+	width: 90%;
+	height: auto;
+}
+
+form.flex-form{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -2em;
+}
+
+section.form-group {
+    flex: 1 0 300px;
+    margin-right: 2em;
+}
+
+.form-group ul {
+    list-style: none;
+    margin: 0 0 2em;
+    padding: 0;
+}
+
+
+.form-group li {
+    margin-bottom: 0.5em;
+}
+
+.form-fields li {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.form-fields label {
+    flex: 1 0 90px;/*used to be 90*/
+    max-width: 150px;/*used to be 200*/
+}
+
+.form-init{
+	max-height: 0px;
+	overflow-y: hidden;
+	/*transition: max-height 2s ease-in;*/
+}
+.form-full{
+	max-height: auto;
+	/*transition: max-height 2s ease-out;*/
+}
+
+@media screen and (min-width: 52em){
+	blockquote{
+    	font-size: 3em;
+    }
+
+    .inline-img{
+    	width: auto;
+    }
+}
+
+
+
+[type=radio]:checked + img.inline-img {
+  outline: 2px solid #f00;
+}
+
+.subtype-group{
+	list-style-type: none;
+}
+
+/*product-dish.html*/
+
+.dish{
+	position: relative;
+	/*min-height: 350px;*/
+	width: 100%;
+}
+
+.dish h3{
+	padding: 0.5em;
+	margin: 0;
+}
+
+.to-use{
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+}
+
+h3#next-page{
+	color: black;
+}
+
+h3#next-page:hover{
+	cursor: pointer;
+}
+
+/*restaurant*/
+div.outer{
+	width:100%;
+	overflow-x: hidden;
+}
+div.inner1{
+	width: 40%;
+	float: left;
+	background-color: red;
+}
+div.inner2{
+	width: 40%;
+	float: left;
+	background-color: blue;
+}
+
+/*accordion display*/
+input.accordion-radio,.accordion-content {display: none;}
+
+label.accordion-label,
+input:checked + .accordion-content {display: block;}
+
+label.accordion-label {
+    cursor: pointer;
+    background: -webkit-linear-gradient(#34495E, #95A5A6);
+    color: #fff;
+    padding: 5px 25px;
+    border: 1px solid #ccc;
+    margin-top: -1px;
+}
+
+label.accordion-label:hover {background: -webkit-linear-gradient(#95A5A6, #34495E);}
+
+/*radio-image*/
+input.radio-image{display: none}
+
+input.radio-image + label{
+	cursor: pointer;
+}
+
+input.radio-image:checked + label > img{
+  border: 1px solid #34495E;
+  box-shadow: 0 0 3px 3px #95A5A6;
+}
+
+.grid-container-4col{
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+}
+
+.grid-item img{
+	width: 100%;
+	height: auto;
+}
