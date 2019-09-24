@@ -1,0 +1,77 @@
+{
+	"crabs" : 
+		[
+			{
+				"type" : "Alimango",
+				"img" : "images/palengke/crabs.png",
+				"size" : ["Small", "Medium", "Large"],
+				"gender" : ["Male", "Female", "Bakla"],
+				"price_maxtrix" : [
+									{"idx" : "00", "price": "750"}, 
+									{"idx" : "01", "price": "750"},
+									{"idx" : "02", "price": "750"},
+									{"idx" : "10", "price": "850"}, 
+									{"idx" : "11", "price": "850"},
+									{"idx" : "12", "price": "850"},
+									{"idx" : "20", "price": "950"}, 
+									{"idx" : "21", "price": "950"},
+									{"idx" : "22", "price": "950"}
+								  ]
+			},
+			{
+				"type" : "Alimasag - Live",
+				"img" : "images/palengke/alimasag.png",
+				"size" : ["Small", "Medium", "Large"],
+				"gender" : ["Male", "Female", "Bakla"],
+				"price_maxtrix": [
+									{"idx" : "00", "price": "750"}, 
+									{"idx" : "01", "price": "750"},
+									{"idx" : "02", "price": "750"},
+									{"idx" : "10", "price": "850"}, 
+									{"idx" : "11", "price": "850"},
+									{"idx" : "12", "price": "850"},
+									{"idx" : "20", "price": "950"}, 
+									{"idx" : "21", "price": "950"},
+									{"idx" : "22", "price": "950"}
+								  ]
+			},
+			{
+				"type" : "King & Queen",
+				"img" : "images/palengke/crabs.png",
+				"size" : [""],
+				"gender" : ["Male", "Female", "Bakla"],
+				"price_maxtrix" : [
+									{"idx" : "00", "price": "1200"}, 
+									{"idx" : "01", "price": "1200"},
+									{"idx" : "02", "price": "1200"}
+								  ]
+			},
+			{
+				"type" : "Alimasag Fresh",
+				"img" : "images/palengke/alimasag.png",
+				"size" : ["Small", "Medium"],
+				"gender" : [""],
+				"price_maxtrix" : [
+									{"idx" : "00", "price": "500"}, 
+									{"idx" : "01", "price": "650"}
+								  ]
+			},
+			{
+				"type" : "Alimasag - Patay",
+				"img" : "images/palengke/alimasag.png",
+				"size" : [""],
+				"gender" : [""],
+				"price_maxtrix" : [{"idx" : "00", "price": "500"}]
+			},
+			{
+				"type" : "Red Crab",
+				"img" : "images/palengke/crabs.png",
+				"size" : ["Small", "Big"],
+				"gender" : [""],
+				"price_maxtrix" : [
+									{"idx" : "00", "price": "1200"}, 
+									{"idx" : "01", "price": "1500"}
+								  ]
+			}
+		]
+}
