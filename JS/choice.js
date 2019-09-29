@@ -2,7 +2,7 @@ const choose_subtype = document.querySelector("#choose-subtype");
 
 const selected_choice = document.querySelector('#selected-choice');
 
-const choices = document.querySelectorAll('.order-main');
+//const choices = document.querySelectorAll('.order-main');
 
 const subtype_food = document.querySelectorAll('.subtype-food');
 

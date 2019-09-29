@@ -1,6 +1,15 @@
 const slideList = document.querySelector('ul.hs');
 slideList.innerHTML = '';
 const crabs = [];
+var unit_price = 0;
+var price_idx = '11';
+var prod_type = '';
+const weight_title =document.querySelector('#weight h3');
+const flex_form_weight = document.querySelector('#flex-form-weight');
+const product_weight = document.querySelector('#product-weight');
+var crab_price = 0;
+const computed_price = document.querySelector('#computed_price');
+var genders;
 
 (function(){
 	fetch('JS/json/crabs.json')
@@ -20,7 +29,12 @@ const crabs = [];
 	})
 })();
 
+product_weight.addEventListener('change', () => {
+	console.log(product_weight.value)
 
+	crab_price =  parseFloat(product_weight.value) * parseFloat(unit_price);
+	computed_price.textContent	= `Price for ${prod_type}, ${product_weight.value} Kg : ${crab_price}`;
+})
 
 const updateCrabArr = data => {
 	data.crabs.forEach(ind => {
@@ -74,6 +88,119 @@ const updateSlideList = crab_Arr => {
 	});
 }
 
+const getPrice = (acc, crb) => {
+	if(crb.type == prod_type){
+		acc = crb.prices_arr.reduce((acc2,cr2) => {
+			if(cr2.idx == price_idx) acc2 = cr2.price;
+			return acc2
+		}, '');
+	}
+	return acc;
+}
+
+const getGenders = (acc, crb) => {
+	if(crb.type == prod_type) acc = crb.gender_arr
+	return acc;
+}
+
+const getSizes = (acc, crb) => {
+	if(crb.type == prod_type) acc = crb.size_arr
+	return acc;
+}
+
+const populateGenders = () => {
+	genders = crabs.reduce(getGenders, []);
+	console.log(genders)
+	let flex_form_gender = document.querySelector('#flex-form-gender');
+	let flex_form_gender_ul =flex_form_gender.querySelector('ul');
+
+	genders.forEach((gd,idx) => {
+		let li = document.createElement('li');
+		let radioInput = document.createElement('input');
+		radioInput.setAttribute('type', 'radio');
+		radioInput.setAttribute('name', 'gender');
+		radioInput.setAttribute('value', idx);
+		radioInput.setAttribute('class', 'radio-list');
+
+		let txt = document.createTextNode(`${gd}`); 
+
+		li.appendChild(radioInput);
+		li.appendChild(txt);
+		flex_form_gender_ul.appendChild(li);
+	});
+
+	if(flex_form_gender.className == 'flex-form form-init'){
+		flex_form_gender.className = 'flex-form form-full';
+	}
+
+	document.querySelector('#flex-form-gender').scrollIntoView({ 
+	  behavior: 'smooth' 
+	});
+}
+
+const populateSizes = () => {
+	let sizes = crabs.reduce(getSizes, []);
+	console.log(sizes);
+	let flex_form_size = document.querySelector('#flex-form-size');
+	let flex_form_size_ul =flex_form_size.querySelector('ul');
+
+	sizes.forEach((sz, idx) => {
+		let li = document.createElement('li');
+		let radioInput = document.createElement('input');
+		radioInput.setAttribute('type', 'radio');
+		radioInput.setAttribute('name', 'size');
+		radioInput.setAttribute('value', idx);
+		radioInput.setAttribute('class', 'radio-list-size');
+
+		let txt = document.createTextNode(`${sz}`); 
+
+		li.appendChild(radioInput);
+		li.appendChild(txt);
+		flex_form_size_ul.appendChild(li);
+	});
+
+	if(flex_form_size.className == 'flex-form form-init'){
+		flex_form_size.className = 'flex-form form-full';
+	}
+
+	document.querySelector('#flex-form-size').scrollIntoView({ 
+	  behavior: 'smooth' 
+	});
+}
+
+const display_weight = () => {
+	weight_title.innerHTML = `Choose weight for ${prod_type}/  Price per Kg: ${unit_price}`;
+	//
+	if(flex_form_weight.className == 'flex-form form-init'){
+		flex_form_weight.className = 'flex-form form-full';
+	}
+
+	crab_price =  parseFloat(product_weight.value) * parseFloat(unit_price);
+	computed_price.textContent	= `Price for ${prod_type}, ${product_weight.value} Kg : ${crab_price}`;
+
+	document.querySelector('#flex-form-weight').scrollIntoView({ 
+	  behavior: 'smooth' 
+	});
+}
+
+
+
+const getGenderOnlyPrice = () => {
+	let value = document.querySelector('input[name=gender]:checked').value;
+	price_idx = value + "0";
+	unit_price =crabs.reduce(getPrice, '--');
+	console.log(unit_price);
+	display_weight();
+}
+
+const getSizeOnlyPrice = () => {
+	let value = document.querySelector('input[name=size]:checked').value;
+	price_idx = "0" + value;
+	unit_price =crabs.reduce(getPrice, '--');
+	console.log(unit_price);
+	display_weight();
+}
+
 const nextStep = type => {
 	console.log('next step for ' + type);
 	let selected_crab = crabs.reduce((acc, curr) => { 
@@ -85,4 +212,36 @@ const nextStep = type => {
 		return acc;
 	}, {type: '', size: [], gender: []})
 	console.log(selected_crab);
+
+	prod_type = selected_crab.type;
+	let gender = selected_crab.gender;
+	let size = selected_crab.size;
+
+
+	if(gender.length == 1 && size.length == 1){
+		price_idx = '00';
+		unit_price =crabs.reduce(getPrice, '--');
+		console.log(unit_price);
+		display_weight();
+		
+	}
+	else if(gender.length > 1 && size.length == 1){
+		populateGenders();
+		//remove listerener here
+		const gender_rb = document.querySelectorAll('.radio-list');
+		console.log('gender',gender_rb);
+		gender_rb.forEach(grb => {
+			grb.addEventListener('click', getGenderOnlyPrice)
+		});
+	}
+	else if(gender.length == 1 && size.length > 1){
+		populateSizes();
+		//remove listerener here
+		const size_rb = document.querySelectorAll('.radio-list-size');
+		console.log('size_rb',size_rb);
+		size_rb.forEach(sze => {
+			sze.addEventListener('click', getSizeOnlyPrice)
+		});
+	}
+
 }

@@ -104,49 +104,33 @@
                     <input type="hidden" name="product" id="product" value="Crab">
                     <input type="hidden" name="selected-choice" id="selected-choice" value="">
                 </section><!--.app-->
-                <section id="subtype" class="post-content subtype-init">
-                    <h3 id="choose-subtype">Choose Subtype</h3>
-                    <section>
-                        <ul class="subtype-group">         
-                            <li>
-                                <input type="radio" id="lalaki" name="subtype-food" class="subtype-food" value="Lalake" data-price-kilo="300">
-                                <label for="lalaki"><img src="images/palengke/lalake.png" class="inline-img" alt="lalaki"></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="babae" name="subtype-food" class="subtype-food" value="Babae" data-price-kilo="400">
-                                <label for="lalaki"><img src="images/palengke/babae.png" class="inline-img" alt="Babae"></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="bakla" name="subtype-food" class="subtype-food" value="Bakla" data-price-kilo="500">
-                                <label for="lalaki"><img src="images/palengke/bakla.png" class="inline-img" alt="Bakla"></label>
-                            </li>
-                        </ul>
-                    </section>
-                </section>
-                <section class="post-content">
-                    <h3>Choose Size and Quantity</h3>
-                    <form id="flex-form" class="flex-form form-init">
+                
+                <section id="gender" class="post-content">
+                    <h3>Choose Gender</h3>
+                    <form id="flex-form-gender" class="flex-form form-init">
                         <section class="form-group">
-                            <ul class="form-fields">
+                            <ul style="list-style: none;">
+                            </ul>
+                        </section>
+                    </form>
+                </section>
+                <section id="size" class="post-content">
+                    <h3>Choose Size</h3>
+                    <form id="flex-form-size" class="flex-form form-init">
+                        <section class="form-group">
+                            <ul style="list-style: none;">
+                            </ul>
+                        </section>
+                    </form>
+                </section>
+                <section id="weight" class="post-content">
+                    <h3>Choose Weight</h3>
+                    <form id="flex-form-weight"" class="flex-form form-init">
+                        <section class="form-group">
+                            <ul id="form-fields-weight">
                                 <li>
-                                    <label for="product-subtype">Crab Sub Type</label>
-                                    <select class="select-menu" id="product-subtype" name="product-subtype">
-                                        <option value="Lalake">Lalake</option>
-                                        <option value="Babae">Babae</option>
-                                        <option value="Bakla">Bakla</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <label for="product-size">Size</label>
-                                    <select class="select-menu" id="product-size" name="product-size">
-                                        <option value="Small">Small</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="Large">Large</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <label for="product-qty">Quantity</label>
-                                    <select class="select-menu" id="product-qty" name="product-qty">
+                                    <label for="product-weight">Kg Weight</label>
+                                    <select class="select-menu" id="product-weight" name="product-weight">
                                         <option value="0.5">0.5</option>
                                         <option value="1">1</option>
                                         <option value="1.5">1.5</option>
@@ -156,13 +140,12 @@
                                         <option value="3.5">3.5</option>
                                     </select>
                                 </li>
-                                <li>
-                                    <label>&nbsp;</label>
-                                    <button id="next-page">Next  <i class="fa fa-arrow-circle-right"></i></button>
-                                </li>
                             </ul>
                         </section>
                     </form>
+                </section>
+                <section>
+                    <div id="computed_price"></div>
                 </section>
             </article>
             <div class="sidebar">
@@ -200,7 +183,7 @@
         </div><!-- .centered -->
     </footer>
     <script src="JS/main.js"></script>
-    <script src="JS/choice.js"></script>
+    <!--<script src="JS/choice.js"></script>-->
     <script src="JS/crab.js"></script>
 </body>
 </html>
