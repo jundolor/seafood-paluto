@@ -10,6 +10,8 @@ const product_weight = document.querySelector('#product-weight');
 var crab_price = 0;
 const computed_price = document.querySelector('#computed_price');
 var genders;
+const flex_form_gender = document.querySelector('#flex-form-gender');
+const flex_form_size = document.querySelector('#flex-form-size');
 
 (function(){
 	fetch('JS/json/crabs.json')
@@ -108,11 +110,11 @@ const getSizes = (acc, crb) => {
 	return acc;
 }
 
-const populateGenders = () => {
+const initGenders = () => {
 	genders = crabs.reduce(getGenders, []);
 	console.log(genders)
-	let flex_form_gender = document.querySelector('#flex-form-gender');
-	let flex_form_gender_ul =flex_form_gender.querySelector('ul');
+	let flex_form_gender_ul = flex_form_gender.querySelector('ul');
+	const gender_rb = document.querySelectorAll('.radio-list');
 
 	genders.forEach((gd,idx) => {
 		let li = document.createElement('li');
@@ -141,8 +143,7 @@ const populateGenders = () => {
 const populateSizes = () => {
 	let sizes = crabs.reduce(getSizes, []);
 	console.log(sizes);
-	let flex_form_size = document.querySelector('#flex-form-size');
-	let flex_form_size_ul =flex_form_size.querySelector('ul');
+	let flex_form_size_ul = flex_form_size.querySelector('ul');
 
 	sizes.forEach((sz, idx) => {
 		let li = document.createElement('li');
@@ -158,7 +159,11 @@ const populateSizes = () => {
 		li.appendChild(txt);
 		flex_form_size_ul.appendChild(li);
 	});
+}
 
+const initSizes1 = () => {
+	populateSizes();
+	
 	if(flex_form_size.className == 'flex-form form-init'){
 		flex_form_size.className = 'flex-form form-full';
 	}
@@ -201,7 +206,43 @@ const getSizeOnlyPrice = () => {
 	display_weight();
 }
 
+const reset = () => {
+	//reset gender
+	//clear first the event listeners
+	let gender_rb = document.querySelectorAll('.radio-list');
+	gender_rb.forEach(grb => {
+		grb.removeEventListener('click', getGenderOnlyPrice);
+	});
+
+	if(flex_form_gender.className == 'flex-form form-full'){
+		flex_form_gender.className = 'flex-form form-init';
+	}
+
+	if (flex_form_gender.querySelector('ul').hasChildNodes()) flex_form_gender.querySelector('ul').innerHTML = "";
+
+	//reset sizes 
+	let size_rb = document.querySelectorAll('.radio-list-size');
+	size_rb.forEach(sze => {
+		sze.removeEventListener('click', getSizeOnlyPrice)
+	});
+
+	if(flex_form_size.className == 'flex-form form-full'){
+		flex_form_size.className = 'flex-form form-init';
+	}
+
+	if (flex_form_size.querySelector('ul').hasChildNodes()) flex_form_size.querySelector('ul').innerHTML = "";
+ 
+	//reset weight 
+	weight_title.innerHTML = "Choose Weight";
+	if(flex_form_weight.className == 'flex-form form-full'){
+		flex_form_weight.className = 'flex-form form-init';
+	}
+
+	computed_price.textContent	= "";
+}
+
 const nextStep = type => {
+	reset();
 	console.log('next step for ' + type);
 	let selected_crab = crabs.reduce((acc, curr) => { 
 		if(curr.type == type) {
@@ -226,18 +267,18 @@ const nextStep = type => {
 		
 	}
 	else if(gender.length > 1 && size.length == 1){
-		populateGenders();
+		initGenders();
 		//remove listerener here
-		const gender_rb = document.querySelectorAll('.radio-list');
+		let gender_rb = document.querySelectorAll('.radio-list');
 		console.log('gender',gender_rb);
 		gender_rb.forEach(grb => {
-			grb.addEventListener('click', getGenderOnlyPrice)
+			grb.addEventListener('click', getGenderOnlyPrice);
 		});
 	}
 	else if(gender.length == 1 && size.length > 1){
-		populateSizes();
+		initSizes1();
 		//remove listerener here
-		const size_rb = document.querySelectorAll('.radio-list-size');
+		let size_rb = document.querySelectorAll('.radio-list-size');
 		console.log('size_rb',size_rb);
 		size_rb.forEach(sze => {
 			sze.addEventListener('click', getSizeOnlyPrice)
