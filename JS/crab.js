@@ -114,7 +114,6 @@ const initGenders = () => {
 	genders = crabs.reduce(getGenders, []);
 	console.log(genders)
 	let flex_form_gender_ul = flex_form_gender.querySelector('ul');
-	const gender_rb = document.querySelectorAll('.radio-list');
 
 	genders.forEach((gd,idx) => {
 		let li = document.createElement('li');
@@ -161,9 +160,9 @@ const populateSizes = () => {
 	});
 }
 
-const initSizes1 = () => {
+const initSizes = () => {
 	populateSizes();
-	
+
 	if(flex_form_size.className == 'flex-form form-init'){
 		flex_form_size.className = 'flex-form form-full';
 	}
@@ -188,13 +187,11 @@ const display_weight = () => {
 	});
 }
 
-
-
 const getGenderOnlyPrice = () => {
 	let value = document.querySelector('input[name=gender]:checked').value;
 	price_idx = value + "0";
 	unit_price =crabs.reduce(getPrice, '--');
-	console.log(unit_price);
+	
 	display_weight();
 }
 
@@ -202,7 +199,34 @@ const getSizeOnlyPrice = () => {
 	let value = document.querySelector('input[name=size]:checked').value;
 	price_idx = "0" + value;
 	unit_price =crabs.reduce(getPrice, '--');
-	console.log(unit_price);
+	
+	display_weight();
+}
+
+const updateGenderSizePriceMatrix = () => {
+	if(!(document.querySelector('input[name=gender]:checked') === null) && !(document.querySelector('input[name=size]:checked') === null)){
+		let value1 = document.querySelector('input[name=gender]:checked').value;
+		let value2 = document.querySelector('input[name=size]:checked').value;
+
+		price_idx = value1 + value2;
+
+		unit_price =crabs.reduce(getPrice, '--');
+	}
+}
+
+const getGenderPriceMatrix = () => {
+	initSizes();
+	updateGenderSizePriceMatrix();
+
+	let size_rb = document.querySelectorAll('.radio-list-size');
+	size_rb.forEach(sze => {
+		sze.addEventListener('click', getSizePriceMatrix);
+	});
+}
+
+const getSizePriceMatrix = () => {
+	updateGenderSizePriceMatrix();
+
 	display_weight();
 }
 
@@ -212,6 +236,7 @@ const reset = () => {
 	let gender_rb = document.querySelectorAll('.radio-list');
 	gender_rb.forEach(grb => {
 		grb.removeEventListener('click', getGenderOnlyPrice);
+		grb.removeEventListener('click', getGenderPriceMatrix);
 	});
 
 	if(flex_form_gender.className == 'flex-form form-full'){
@@ -223,7 +248,8 @@ const reset = () => {
 	//reset sizes 
 	let size_rb = document.querySelectorAll('.radio-list-size');
 	size_rb.forEach(sze => {
-		sze.removeEventListener('click', getSizeOnlyPrice)
+		sze.removeEventListener('click', getSizeOnlyPrice);
+		sze.removeEventListener('click', getSizePriceMatrix);
 	});
 
 	if(flex_form_size.className == 'flex-form form-full'){
@@ -262,27 +288,35 @@ const nextStep = type => {
 	if(gender.length == 1 && size.length == 1){
 		price_idx = '00';
 		unit_price =crabs.reduce(getPrice, '--');
-		console.log(unit_price);
 		display_weight();
 		
 	}
 	else if(gender.length > 1 && size.length == 1){
 		initGenders();
-		//remove listerener here
+		
 		let gender_rb = document.querySelectorAll('.radio-list');
-		console.log('gender',gender_rb);
 		gender_rb.forEach(grb => {
 			grb.addEventListener('click', getGenderOnlyPrice);
 		});
 	}
 	else if(gender.length == 1 && size.length > 1){
-		initSizes1();
-		//remove listerener here
+		initSizes();
+
 		let size_rb = document.querySelectorAll('.radio-list-size');
-		console.log('size_rb',size_rb);
 		size_rb.forEach(sze => {
 			sze.addEventListener('click', getSizeOnlyPrice)
 		});
+	}
+	else if(gender.length > 1 && size.length > 1){
+		initGenders();
+		let gender_rb = document.querySelectorAll('.radio-list');
+		gender_rb.forEach(grb => {
+			grb.addEventListener('click', getGenderPriceMatrix); //calls initSizes
+		});
+
+		//updateGenderSizePriceMatrix()
+
+		//display_weight();
 	}
 
 }
