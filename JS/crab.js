@@ -1,9 +1,11 @@
+const style = !(objUrlParams.style === null)? objUrlParams.style : 'palengke';
 const slideList = document.querySelector('ul.hs');
 slideList.innerHTML = '';
 const crabs = [];
 var unit_price = 0;
 var price_idx = '11';
 var prod_type = '';
+var prod_details = '';
 const weight_title =document.querySelector('#weight h3');
 const flex_form_weight = document.querySelector('#flex-form-weight');
 const product_weight = document.querySelector('#product-weight');
@@ -12,6 +14,7 @@ const computed_price = document.querySelector('#computed_price');
 var genders;
 const flex_form_gender = document.querySelector('#flex-form-gender');
 const flex_form_size = document.querySelector('#flex-form-size');
+const btnNext = document.querySelector('#next');
 
 (function(){
 	fetch('JS/json/crabs.json')
@@ -106,13 +109,12 @@ const getGenders = (acc, crb) => {
 }
 
 const getSizes = (acc, crb) => {
-	if(crb.type == prod_type) acc = crb.size_arr
+	if(crb.type == prod_type) acc = crb.size_arr;
 	return acc;
 }
 
 const initGenders = () => {
 	genders = crabs.reduce(getGenders, []);
-	console.log(genders)
 	let flex_form_gender_ul = flex_form_gender.querySelector('ul');
 
 	genders.forEach((gd,idx) => {
@@ -122,6 +124,7 @@ const initGenders = () => {
 		radioInput.setAttribute('name', 'gender');
 		radioInput.setAttribute('value', idx);
 		radioInput.setAttribute('class', 'radio-list');
+		radioInput.dataset.genderValue = gd;
 
 		let txt = document.createTextNode(`${gd}`); 
 
@@ -151,6 +154,7 @@ const populateSizes = () => {
 		radioInput.setAttribute('name', 'size');
 		radioInput.setAttribute('value', idx);
 		radioInput.setAttribute('class', 'radio-list-size');
+		radioInput.dataset.sizeValue = sz;
 
 		let txt = document.createTextNode(`${sz}`); 
 
@@ -191,6 +195,7 @@ const getGenderOnlyPrice = () => {
 	let value = document.querySelector('input[name=gender]:checked').value;
 	price_idx = value + "0";
 	unit_price =crabs.reduce(getPrice, '--');
+	prod_details = document.querySelector('input[name=gender]:checked').dataset.genderValue;
 	
 	display_weight();
 }
@@ -199,6 +204,7 @@ const getSizeOnlyPrice = () => {
 	let value = document.querySelector('input[name=size]:checked').value;
 	price_idx = "0" + value;
 	unit_price =crabs.reduce(getPrice, '--');
+	prod_details = document.querySelector('input[name=size]:checked').dataset.sizeValue + " Size";
 	
 	display_weight();
 }
@@ -209,6 +215,8 @@ const updateGenderSizePriceMatrix = () => {
 		let value2 = document.querySelector('input[name=size]:checked').value;
 
 		price_idx = value1 + value2;
+
+		prod_details = document.querySelector('input[name=gender]:checked').dataset.genderValue + " / " + document.querySelector('input[name=size]:checked').dataset.sizeValue + " Size";
 
 		unit_price =crabs.reduce(getPrice, '--');
 	}
@@ -231,6 +239,11 @@ const getSizePriceMatrix = () => {
 }
 
 const reset = () => {
+	//reset vars
+	var unit_price = 0;
+    var price_idx = '11';
+	var prod_type = '';
+	prod_details = '';
 	//reset gender
 	//clear first the event listeners
 	let gender_rb = document.querySelectorAll('.radio-list');
@@ -313,10 +326,22 @@ const nextStep = type => {
 		gender_rb.forEach(grb => {
 			grb.addEventListener('click', getGenderPriceMatrix); //calls initSizes
 		});
-
-		//updateGenderSizePriceMatrix()
-
-		//display_weight();
 	}
 
 }
+
+btnNext.addEventListener('click', e => {
+	e.preventDefault();
+
+	prod_details = prod_details != '' ? prod_details : '22';
+
+	let ordersObj = {main: 'Crabs', prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
+
+	let str = JSON.stringify(ordersObj);
+
+	let orders_url = encodeURI(str);
+
+	reset();
+
+	window.location.href = `order_summary.html?orders=${orders_url}`;
+});

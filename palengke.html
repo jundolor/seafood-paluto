@@ -91,7 +91,7 @@
                 <h3>Choose from our palengke</h3>
                 <section class="cards-2col">
                     <article class="card-2col">
-                        <a href="crabs.html">
+                        <a id='crab' href="crabs.html">
                             <figure class="thumbnail">
                                 <img src="images/palengke/crabs.png" alt="Our market">
                             </figure>
@@ -219,5 +219,10 @@
         </div><!-- .centered -->
     </footer>
     <script src="JS/main.js"></script>
+    <script type="text/javascript">
+        let style = !(objUrlParams.style === null)? objUrlParams.style : 'palengke';
+        let crab = document.querySelector('#crab');
+        crab.href =  'crabs.html?style=' + style;
+    </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Seafood Paluto Restaurants</title>
-	<meta name="description" content="Seafood served fresh. We also deliver right to your doorstep">	
+	<meta name="description" content="Place your seafood. We also deliver right to your doorstep">	
 
 	<link rel="stylesheet" href="style-menus.css" type="text/css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -21,13 +21,12 @@
             </div><!-- .site-title -->
         </div><!-- .centered -->
     </header><!-- .masthead -->
-    <div style="position: absolute;left: 0.5em; top:1em;"><a href="#" style="color: white;text-decoration: none; font-size: 0.8em;">Track your order</a></div>
-    <div style="position: absolute;right: 0.5em; top:1em;color: white;"><a href="#" style="color: white;text-decoration: none; font-size: 0.8em;">Sign In</a> / <a href="#" style="color: white;text-decoration: none; font-size: 0.8em;">Cart</a> </div>
+
     <main class="main-area">
     	<section class="menu-section">
     		<nav id="advanced-nav" class="advanced-nav menu" role="navigation">
-    			<button class="menu-toggle"><i class="fa fa-bars"></i></button>
-    			<ul>
+                <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul>
                         <li>
                             <a href="index.html">
                                 <div class="icon">
@@ -85,74 +84,48 @@
                             </a>
                         </li>
                     </ul>
-    		</nav><!-- .advanced-nav -->
+            </nav><!-- .advanced-nav -->
     	</section><!-- .menu-section -->
-
+        <div class="content">
+            <article class="post-content">
+                <section class="cards">
+                    <h2 id="order_title">Summary of order</h2>
+                    <article class="card-1col">
+                        
+                        <ul id="prod_info"></ul>
+                    </article>
+                </section>
+                <section id="choose-next" class="post-content">
+                    <h3>Pickup or Deliver</h3>
+                    <form id="flex-form-next" class="flex-form form-full">
+                        <section class="form-group">
+                            <ul style="list-style: none;">
+                                <li><input type="radio" name="next" checked> Pick Up</li>
+                                <li><input type="radio" name="next"> Pa Deliver</li>
+                            </ul>
+                        </section>
+                    </form>
+                </section>
+                <section id="info" class="post-content">
+                    <h3>Enter Pickup or Deliver Info</h3>
+                    <form id="flex-form-info" class="flex-form form-full">
+                        <section class="form-group">
+                            <ul style="list-style: none;">
+                                <li><label for="name">Name</label> <input type="text" name="name" id="name"></li>
+                                <li><label for="contact">Contact No</label> <input type="text" name="contact" id="contact"></li>
+                                <li><label for="date">Date</label> <input type="text" name="date" id="date"></li>
+                                <li><label for="contact">Time</label> <input type="text" name="time" id="time"></li>
+                            </ul>
+                        </section>
+                    </form>
+                </section>
+            </article>
+            <div class="sidebar">
+                <p>side bar</p>
+            </div>
+        </div>
         <div class="centered">
-            <section class="cards">
-                <article class="card">
-                        <a href="palengke.html?style=palengke">
-                            <figure class="thumbnail">
-                                <img src="images/cropped/palengke.png" alt="Our market">
-                            </figure>
-                            <div class="card-content">
-                                <h2>Palengke</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean arcu augue, efficitur ac erat non, bibendum congue orci.</p>
-                                <p>Order Now <i class="fa fa-arrow-circle-right"></i></p>
-                            </div><!-- .card-content -->
-                        </a>
-                    </article><!-- .card -->
-
-                    <article class="card">
-                        <a href="palengke.html?style=paluto">
-                            <figure class="thumbnail">
-                                <img src="images/cropped/paluto.png" alt="We cook your dish">
-                            </figure>
-                            <div class="card-content">
-                                <h2>Paluto</h2>
-                                <p>Duis auctor in nisl at ullamcorper. Aenean aliquet turpis purus. Ut eget ipsum in metus molestie ultrices.</p>
-                                <p>Order Now <i class="fa fa-arrow-circle-right"></i></p>
-                            </div><!-- .card-content -->
-                        </a>
-                    </article><!-- .card -->
-
-                    <article class="card">
-                        <a href="#">
-                            <figure class="thumbnail">
-                                <img src="images/cropped/restaurant.png" alt="We deliver to your doorstep">
-                            </figure>
-                            <div class="card-content">
-                                <h2>Restaurants</h2>
-                                <ul>
-                                    <li>Penang</li>
-                                    <li>Chinta Kechil</li>
-                                    <li>New Hongkong</li>
-                                    <li>Boodle Fight</li>
-                                    <li>Aling Tonya</li>
-                                    <li>Seaside</li>
-                                </ul>
-                            </div><!-- .card-content -->
-                        </a>
-                    </article><!-- .card -->
-            </section><!-- .cards -->
-            <section class="cards">
-                <article class="card-1col" style="margin-bottom: 0.5em;">
-                    <a href=""><h3 style="text-align: center; margin-top: 0.5em; margin-bottom: 0.5em;">Special Offers</h3></a>
-                    
-                </article>
-                <article class="card-1col" style="margin-bottom: 0.5em;">
-                    <a href=""><h3 style="text-align: center; margin-top: 0.5em; margin-bottom: 0.5em;">Announcements</h3></a>
-                </article>
-                <article class="card-1col" style="margin-bottom: 0.5em;">
-                    <a href=""><h3 style="text-align: center; margin-top: 0.5em; margin-bottom: 0.5em;">Set Meals</h3></a>
-                </article>
-                <article class="card-1col" style="margin-bottom: 0.5em;">
-                    <a href=""><h3 style="text-align: center; margin-top: 0.5em; margin-bottom: 0.5em;">Bilao Delivery</h3></a>
-                </article>
-            </section>
-            <section id="quote">
-                <blockquote class="homequote">I'm on a seafood diet. Whenever I see food, I eat it <br> - unknown</blockquote>
-            </section>
+            
         </div><!-- .centered -->
     	
     </main><!-- .main-area -->
@@ -172,5 +145,6 @@
         </div><!-- .centered -->
     </footer>
     <script src="JS/main.js"></script>
+    <script src="JS/order_summary.js"></script>
 </body>
 </html>
