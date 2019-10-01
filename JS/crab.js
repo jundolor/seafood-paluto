@@ -335,11 +335,13 @@ btnNext.addEventListener('click', e => {
 
 	prod_details = prod_details != '' ? prod_details : '22';
 
-	let ordersObj = {prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
+	let ordersObj = {main: 'Crabs', prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
 
 	let str = JSON.stringify(ordersObj);
 
 	let orders_url = encodeURI(str);
+
+	reset();
 
 	window.location.href = `order_summary.html?orders=${orders_url}`;
 });
