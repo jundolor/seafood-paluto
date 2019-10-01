@@ -36,7 +36,7 @@
 								  ]
 			},
 			{
-				"type" : "King & Queen",
+				"type" : "King and Queen",
 				"img" : "images/palengke/crabs.png",
 				"gender" : ["Male", "Female", "Bakla"],
 				"size" : [""],
