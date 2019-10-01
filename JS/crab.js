@@ -1,3 +1,4 @@
+const style = !(objUrlParams.style === null)? objUrlParams.style : 'palengke';
 const slideList = document.querySelector('ul.hs');
 slideList.innerHTML = '';
 const crabs = [];
@@ -13,6 +14,7 @@ const computed_price = document.querySelector('#computed_price');
 var genders;
 const flex_form_gender = document.querySelector('#flex-form-gender');
 const flex_form_size = document.querySelector('#flex-form-size');
+const btnNext = document.querySelector('#next');
 
 (function(){
 	fetch('JS/json/crabs.json')
@@ -107,7 +109,7 @@ const getGenders = (acc, crb) => {
 }
 
 const getSizes = (acc, crb) => {
-	if(crb.type == prod_type) acc = crb.size_arr
+	if(crb.type == prod_type) acc = crb.size_arr;
 	return acc;
 }
 
@@ -213,6 +215,8 @@ const updateGenderSizePriceMatrix = () => {
 		let value2 = document.querySelector('input[name=size]:checked').value;
 
 		price_idx = value1 + value2;
+
+		prod_details = document.querySelector('input[name=gender]:checked').dataset.genderValue + " / " + document.querySelector('input[name=size]:checked').dataset.sizeValue + " Size";
 
 		unit_price =crabs.reduce(getPrice, '--');
 	}
@@ -325,3 +329,19 @@ const nextStep = type => {
 	}
 
 }
+
+btnNext.addEventListener('click', e => {
+	e.preventDefault();
+
+	prod_details = prod_details != '' ? prod_details : '22';
+
+	let ordersObj = {prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price}
+
+	let str = JSON.stringify(ordersObj);
+
+	let orders_url = encodeURI(str);
+
+	console.log(orders_url)
+
+	//window.location.href = `order_summary.html?orders=${orders_url}`;
+});
