@@ -343,5 +343,5 @@ btnNext.addEventListener('click', e => {
 
 	console.log(orders_url)
 
-	//window.location.href = `order_summary.html?orders=${orders_url}`;
+	window.location.href = `order_summary.html?orders=${orders_url}`;
 });
