@@ -10,6 +10,16 @@
 	<link rel="stylesheet" href="style-menus.css" type="text/css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style type="text/css">
+table.space {
+  border:1px solid black;
+  border-spacing: 5px 10px;
+  }
+td {
+  border:1px dotted orange;
+  padding: 5px;
+  }
+</style>
 </head>
 <body>
     <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -89,36 +99,22 @@
         <div class="content">
             <article class="post-content">
                 <section class="cards">
-                    <h2 id="order_title">Summary of order</h2>
                     <article class="card-1col">
-                        
-                        <ul id="prod_info"></ul>
+                        <div class="card-content">
+                            <h3>Summary of Orders in Cart</h3>
+                            <table id="cart" cellpadding="5" style="font-size: 0.8em;border-spacing: 10px;border-collapse: collapse;">
+                                <tr valign="top">
+                                    <td>Market</td>
+                                    <td>Paluto/ Pa Deliver</td>
+                                    <td>Weight</td>
+                                    <td>Total Market</td>
+                                    <td>Total Paluto</td>
+                                    <td>Total Deliver/ Restaurant</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
                     </article>
-                </section>
-                <section id="choose-next" class="post-content">
-                    <h3>Pickup or Deliver</h3>
-                    <form id="flex-form-next" class="flex-form form-full">
-                        <section class="form-group">
-                            <ul style="list-style: none;">
-                                <li><input type="radio" name="mode" value="Pick up" checked> Pick Up</li>
-                                <li><input type="radio" name="mode" value="Deliver"> Pa Deliver</li>
-                            </ul>
-                        </section>
-                    </form>
-                </section>
-                <section id="info" class="post-content">
-                    <h3>Enter Pickup or Deliver Info</h3>
-                    <form id="flex-form-info" class="flex-form form-full">
-                        <section class="form-group">
-                            <ul style="list-style: none;">
-                                <li><label for="name">Name</label> <input type="text" name="name" id="name"></li>
-                                <li><label for="contact">Contact No</label> <input type="text" name="contact" id="contact"></li>
-                                <li><label for="date">Date</label> <input type="text" name="date" id="date"></li>
-                                <li><label for="time">Time</label> <input type="text" name="time" id="time"></li>
-                                <li><button id="next">Continue to order  <i class="fa fa-arrow-circle-right"></i></li>
-                            </ul>
-                        </section>
-                    </form>
                 </section>
             </article>
             <div class="sidebar">
@@ -147,6 +143,52 @@
     </footer>
     <script src="JS/localforage.min.js"></script>
     <script src="JS/main.js"></script>
-    <script src="JS/order_summary.js"></script>
+    <script type="text/javascript">
+        const cart_key = 'cart';
+        const table = document.querySelector('#cart');
+        localforage.getItem(cart_key).then(function (val) {
+            console.log("getItem returned: ", val);
+
+            let arr = JSON.parse(val);
+
+            arr.forEach(el => {
+                let id = el.id;
+                let prod_type = el.prod_type;
+                let mode = el.mode;
+                let kg = el.kg;
+                let price = el.price;
+
+                let tr = document.createElement('tr');
+
+                let td1 = document.createElement('td')
+                td1.textContent = prod_type;
+                let td2 = document.createElement('td')
+                td2.textContent = mode;
+                td2.style.padding = '15px;'
+                let td3 = document.createElement('td')
+                td3.textContent = kg;
+                let td4 = document.createElement('td')
+                td4.textContent = price;
+                let td5 = document.createElement('td')
+                td5.textContent = '-';
+                let td6 = document.createElement('td')
+                td6.textContent = price;
+                let td7 = document.createElement('td')
+                td7.textContent = '-';
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                tr.appendChild(td6);
+                tr.appendChild(td7);
+
+                table.appendChild(tr);
+            });
+        }).catch(function () {
+            console.log("Error retrieving item");
+        })
+    </script>
 </body>
 </html>
