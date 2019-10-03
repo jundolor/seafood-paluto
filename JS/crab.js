@@ -335,7 +335,7 @@ btnNext.addEventListener('click', e => {
 
 	prod_details = prod_details != '' ? prod_details : '22';
 
-	let ordersObj = {main: 'Crabs', prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
+	let ordersObj = {style: style, main: 'Crabs', prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
 
 	let str = JSON.stringify(ordersObj);
 
