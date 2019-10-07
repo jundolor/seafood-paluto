@@ -333,9 +333,19 @@ const nextStep = type => {
 btnNext.addEventListener('click', e => {
 	e.preventDefault();
 
-	prod_details = prod_details != '' ? prod_details : '22';
+	prod_details = prod_details != '' ? prod_details : '';
 
-	let ordersObj = {style: style, main: 'Crabs', prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
+	//let ordersObj = {style: style, main: 'Crabs', prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
+	let ordersObj = Object.create(null);
+	ordersObj.style = style;
+	ordersObj.item = 'Crabs';
+	ordersObj.subitem = prod_type;
+	ordersObj.prod_details = prod_details;
+	ordersObj.weight = product_weight.value;
+	ordersObj.market_price = crab_price;
+	ordersObj.restaurant = '';
+	ordersObj.paluto = '';
+	ordersObj.paluto_price = '';
 
 	let str = JSON.stringify(ordersObj);
 

@@ -141,54 +141,7 @@ td {
             </section>
         </div><!-- .centered -->
     </footer>
-    <script src="JS/localforage.min.js"></script>
     <script src="JS/main.js"></script>
-    <script type="text/javascript">
-        const cart_key = 'cart';
-        const table = document.querySelector('#cart');
-        localforage.getItem(cart_key).then(function (val) {
-            console.log("getItem returned: ", val);
-
-            let arr = JSON.parse(val);
-
-            arr.forEach(el => {
-                let id = el.id;
-                let prod_type = el.prod_type;
-                let mode = el.mode;
-                let kg = el.kg;
-                let price = el.price;
-
-                let tr = document.createElement('tr');
-
-                let td1 = document.createElement('td')
-                td1.textContent = prod_type;
-                let td2 = document.createElement('td')
-                td2.textContent = mode;
-                td2.style.padding = '15px;'
-                let td3 = document.createElement('td')
-                td3.textContent = kg;
-                let td4 = document.createElement('td')
-                td4.textContent = price;
-                let td5 = document.createElement('td')
-                td5.textContent = '-';
-                let td6 = document.createElement('td')
-                td6.textContent = price;
-                let td7 = document.createElement('td')
-                td7.textContent = '-';
-
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-                tr.appendChild(td3);
-                tr.appendChild(td4);
-                tr.appendChild(td5);
-                tr.appendChild(td6);
-                tr.appendChild(td7);
-
-                table.appendChild(tr);
-            });
-        }).catch(function () {
-            console.log("Error retrieving item");
-        })
-    </script>
+    <script src="JS/cart.js?10005"></script>
 </body>
 </html>

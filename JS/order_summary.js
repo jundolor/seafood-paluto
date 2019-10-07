@@ -3,81 +3,124 @@ const orders = decodeURI(orders_URL);
 const objOrders = JSON.parse(orders);
 
 const style = objOrders.style;
-const main = objOrders.main;
-const prod_type = objOrders.prod_type;
+const item = objOrders.item;
+const subitem = objOrders.subitem;
 const prod_details = objOrders.prod_details;
 const weight = objOrders.weight;
-const price = objOrders.price;
+const market_price = objOrders.market_price;
+const restaurant = objOrders.restaurant;
+const paluto = objOrders.paluto;
+const paluto_price = objOrders.paluto_price;
 
-document.querySelector('#order_title').textContent = `Summary for ${main}`;
+document.querySelector('#order_title').textContent = `Summary for ${item}`;
 const ul_info = document.querySelector('#prod_info');
 
 const btnNext = document.querySelector('#next');
 
 const cart_key = 'cart';
 
-let li1 = document.createElement('li');
-let li2 = document.createElement('li');
-let li3 = document.createElement('li');
-let li4 = document.createElement('li');
+const addLi = value => {
+	if (value != ''){
+		let li = document.createElement('li');
+		let txt = document.createTextNode(value);
+		li.appendChild(txt);
+		ul_info.appendChild(li);
+	}
+}
 
-let txt1 = document.createTextNode(`${prod_type}`);
-let txt2 = document.createTextNode(`${prod_details}`);
-let txt3 = document.createTextNode(`Weight: ${weight} kg`);
-let txt4 = document.createTextNode(`Price: ${price}`);
-
-li1.appendChild(txt1);
-li2.appendChild(txt2);
-li3.appendChild(txt3);
-li4.appendChild(txt4);
-
-ul_info.appendChild(li1);
-ul_info.appendChild(li2);
-ul_info.appendChild(li3);
-ul_info.appendChild(li4);
+addLi(`${subitem}`);
+addLi(`${prod_details}`);
+addLi(`Weight: ${weight} kg`);
+addLi(`Price: ${market_price}`);
 
 const initCart = (name, contact, date, time) => {
-	let objCart = Object.create(null);
-	objCart.id = 1;
-	objCart.style = style;
-	objCart.prod_type = prod_type;
-	objCart.paluto = '';//this will be populated later
-	objCart.mode = document.querySelector('input[name=mode]:checked').value;
-	objCart.details = {name:name, contact:contact, date:date, time:time};
-	objCart.kg = weight;
-	objCart.price = price;
-
-	let arr = [];
-	arr.push(objCart);
-
-	let val = JSON.stringify(arr);
-
-	localforage.setItem(cart_key, val).then(function (val) {
-        console.log("setItem stored: ", val);
-    });
+	//USE INDEXEDdv
 
     window.location.href = `cart.html`;
 }
+//set up indexedDB
+let db;
 
-btnNext.addEventListener('click', e => {
-	e.preventDefault();
+window.onload = () => {
+	let request = window.indexedDB.open('cart', 1);
 
-	let name = document.querySelector('#name').value;
-	let contact = document.querySelector('#contact').value;
-	let date = document.querySelector('#date').value;
-	let time = document.querySelector('#time').value;
+	request.onerror = function(){
+		console.log('Database failed to open');
+	}
 
-	console.log("LocalForage is: ", localforage);
+	request.onsuccess = function(){
+		console.log("Datbase opened successfully");
 
-	localforage.getItem(cart_key).then(function (val) {
-        console.log("getItem returned: ", val);
-        if(val == null){
-        	initCart(name, contact, date, time);
-        }
-        else{
-        	initCart(name, contact, date, time);//temp
-        }
-    }).catch(function () {
-        console.log("Error retrieving item");
-    })
-});
+		db = request.result;
+	}
+
+	request.onupgradeneeded = function(e){
+		let db = e.target.result;
+
+		let objectCart = db.createObjectStore('cart', { keyPath: 'id', autoIncrement: true});
+		//let objectCart = db.createObjectStore('cart', { keyPath: 'id', autoIncrement: true});
+
+		objectCart.createIndex('style', 'style', {unique:false});
+		objectCart.createIndex('item', 'item', {unique:false});
+		objectCart.createIndex('subitem', 'subitem', {unique:false});
+		objectCart.createIndex('prod_details', 'prod_details', {unique:false});
+		objectCart.createIndex('weight', 'weight', {unique:false});
+		objectCart.createIndex('market_price', 'market_price', {unique:false});
+		objectCart.createIndex('restaurant', 'restaurant', {unique:false});
+		objectCart.createIndex('paluto', 'paluto', {unique:false});
+		objectCart.createIndex('mode', 'mode', {unique:false});
+		objectCart.createIndex('details', 'details', {unique:false});
+		objectCart.createIndex('paluto_price', 'paluto_price', {unique:false});
+
+
+		console.log("Database setup is complete");
+	}
+
+	function addData(){
+
+		let mode = document.querySelector('input[name="mode"]:checked').value;
+
+		let details = Object.create(null);
+		details.name = document.querySelector('#name').value;
+		details.contact = document.querySelector('#contact').value;
+		details.date = document.querySelector('#date').value;
+		details.time = document.querySelector('#time').value;
+
+		let newOrder = Object.create(null);
+		newOrder.style = style;
+		newOrder.item = item;
+		newOrder.subitem = subitem;
+		newOrder.prod_details = prod_details;
+		newOrder.weight = weight;
+		newOrder.market_price = market_price;
+		newOrder.restaurant = restaurant;
+		newOrder.paluto = paluto;
+		newOrder.mode = mode;
+		newOrder.details = details;
+		newOrder.paluto_price = paluto_price;
+
+		let transaction = db.transaction(['cart'], 'readwrite');
+		let objectCart = transaction.objectStore('cart');
+		let request = objectCart.add(newOrder);
+
+		request.onsuccess = () => {
+			console.log("Added");
+		}
+
+		transaction.oncomplete = () => {
+			console.log('transaction completed');
+
+			window.location.href = 'cart.html';
+		}
+
+		transaction.onerror = () => {
+			console.log('transaction not completed, error!!!');
+		}
+	}
+
+	btnNext.addEventListener('click', e => {
+		e.preventDefault();
+		addData();
+	});
+}
+
