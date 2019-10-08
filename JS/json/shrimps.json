@@ -1,0 +1,58 @@
+{
+	"Shrimp":[
+		{
+			"subtype": "PUSIT (IHAW)",
+			"img": "images/palengke/shrimp-medium.png",
+			"sizes": ["Meal"],
+			"prices": ["650"]
+		},
+		{
+			"subtype": "SUGPO 16/18",
+			"img": "images/palengke/shrimp-medium.png",
+			"sizes": ["Meal"],
+			"prices": ["900"]
+		},
+		{
+			"subtype": "STONE FISH(LIVE)",
+			"img": "images/palengke/shrimp-medium.png",
+			"sizes": ["Meal"],
+			"prices": ["1500"]
+		},
+		{
+			"subtype": "STONE FISH(FRESH)",
+			"img": "images/palengke/shrimp-medium.png",
+			"sizes": ["Meal"],
+			"prices": ["500"]
+		},
+		{
+			"subtype": "LUMOT",
+			"img": "images/palengke/shrimp-prawn.png",
+			"sizes": ["Small", "Medium"],
+			"prices": ["650", "680"]
+		},
+		{
+			"subtype": "SUGPO(BUTTERED)",
+			"img": "images/palengke/shrimp-prawn.png",
+			"sizes": ["Small", "Medium"],
+			"prices": ["700", "750"]
+		},
+		{
+			"subtype": "SUGPO (TEMPURA)",
+			"img": "images/palengke/shrimp-prawn.png",
+			"sizes": ["Small", "Medium"],
+			"prices": ["750", "850"]
+		},
+		{
+			"subtype": "HIPON BIG(TEMPURA)",
+			"img": "images/palengke/shrimp-prawn.png",
+			"sizes": ["Small", "Medium", "Large"],
+			"prices": ["750", "780", "900"]
+		},
+		{
+			"subtype": "SUGPO BIG",
+			"img": "images/palengke/shrimp-prawn.png",
+			"sizes": ["Small", "Medium", "Large"],
+			"prices": ["900", "950", "1000"]
+		}
+	]
+}
