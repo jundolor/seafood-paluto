@@ -168,6 +168,7 @@ const reset = () => {
 
 const order_summary_palengke = () => {
 	let subitem_prod = document.querySelector(`input[name="${item}"]:checked`).value;
+	let img = document.querySelector(`input[name="${item}"]:checked`).nextSibling.firstChild.src;
 
 	let selected_size_arr = product_size.value.split(':');
 	let size = selected_size_arr[0];
@@ -180,6 +181,7 @@ const order_summary_palengke = () => {
 	let ordersObj = Object.create(null);
 	ordersObj.style = style;
 	ordersObj.item = json_key;
+	ordersObj.img = img;
 	ordersObj.subitem = subitem_prod;
 	ordersObj.prod_details = prod_details;
 	ordersObj.weight = product_weight.value;

@@ -113,6 +113,11 @@ const getSizes = (acc, crb) => {
 	return acc;
 }
 
+const getImg = (acc, crb) => {
+	if(crb.type == prod_type) acc = crb.img;
+	return acc;
+}
+
 const initGenders = () => {
 	genders = crabs.reduce(getGenders, []);
 	let flex_form_gender_ul = flex_form_gender.querySelector('ul');
@@ -335,10 +340,13 @@ btnNext.addEventListener('click', e => {
 
 	prod_details = prod_details != '' ? prod_details : '';
 
+	let img = crabs.reduce(getImg, "images/palengke/alimasag.png");
+
 	//let ordersObj = {style: style, main: 'Crabs', prod_type: prod_type, prod_details: prod_details, weight: product_weight.value, price: crab_price};
 	let ordersObj = Object.create(null);
 	ordersObj.style = style;
 	ordersObj.item = 'Crabs';
+	ordersObj.img = img;
 	ordersObj.subitem = prod_type;
 	ordersObj.prod_details = prod_details;
 	ordersObj.weight = product_weight.value;
