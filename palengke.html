@@ -103,7 +103,7 @@
                     </article><!--.card-2col-->
 
                     <article class="card-2col">
-                        <a href="items.html?style=palengke&item=shrimps">
+                        <a id="shrimp" href="#">
                             <figure class="thumbnail">
                                 <img src="images/palengke/shrimp.png" alt="Our market">
                             </figure>
@@ -222,7 +222,10 @@
     <script type="text/javascript">
         let style = !(objUrlParams.style === null)? objUrlParams.style : 'palengke';
         let crab = document.querySelector('#crab');
+        let shrimp = document.querySelector('#shrimp');
+
         crab.href =  'crabs.html?style=' + style;
+        shrimp.href = `items.html?style=${style}&item=shrimps`
     </script>
 </body>
 </html>
