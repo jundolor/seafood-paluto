@@ -4,6 +4,7 @@ const objOrders = JSON.parse(orders);
 
 const style = objOrders.style;
 const item = objOrders.item;
+const img = objOrders.img;
 const subitem = objOrders.subitem;
 const prod_details = objOrders.prod_details;
 const weight = objOrders.weight;
@@ -16,6 +17,10 @@ document.querySelector('#order_title').textContent = `Summary for ${item}`;
 const ul_info = document.querySelector('#prod_info');
 
 const btnNext = document.querySelector('#next');
+
+const order_img = document.querySelector('#order-img');
+
+order_img.src = img;
 
 const cart_key = 'cart';
 
