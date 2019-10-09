@@ -5,6 +5,7 @@ let json_key;
 const subitems = [];
 //const radio_img =  document.querySelectorAll('.radio-image');
 const item_details = document.querySelector('#items-details');
+const product_size = document.querySelector('#product-size');
 
 const cards = document.querySelector('#cards');
 
@@ -103,13 +104,15 @@ const nextStep = (e) => {
 	let size_arr = e.target.dataset.sizeList.split(':');
 	let price_arr = e.target.dataset.priceList.split(':');
 
+	product_size.innerHTML = '';
+
 	for(i=0; i < size_arr.length; i++){
 		let opt = document.createElement('option');
 		opt.value = `${size_arr[i]}:${price_arr[i]}`;
 		let txt = document.createTextNode(`${size_arr[i]} / Php ${price_arr[i]}`);
 		opt.appendChild(txt);
 
-		document.querySelector('#product-size').appendChild(opt);
+		product_size.appendChild(opt);
 
 		if(item_details.className == 'flex-form form-init'){
 			item_details.className = 'flex-form form-full';
