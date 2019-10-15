@@ -45,4 +45,7 @@ h1.site-title {
       1px -1px 0 #000,
       -1px 1px 0 #000,
        1px 1px 0 #000;
+    background-image: url(../images/logo3.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
