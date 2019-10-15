@@ -1,5 +1,6 @@
 let db;
 const cart = document.querySelector('#cart');
+const order_specifics = document.querySelector('#order-specifics');
 
 window.onload = () => {
 	let request = window.indexedDB.open('cart', 1);
@@ -18,6 +19,8 @@ window.onload = () => {
 
 	function displayOrders(){
 		let objectCart = db.transaction('cart').objectStore('cart');
+        let ind_order_specifics = document.createDocumentFragment();
+
 		objectCart.openCursor().onsuccess = function(e) {
             let cursor = e.target.result;
 
@@ -33,7 +36,9 @@ window.onload = () => {
                 let td6 = document.createElement('td');
                 let td7 = document.createElement('td');
 
-                td1.textContent = cursor.value.subitem;
+                let subitem = cursor.value.subitem;
+
+                td1.textContent = subitem;
                 td2.textContent = cursor.value.paluto != "" ? cursor.value.paluto: 'Palengke'
                 td3.textContent = `${cursor.value.weight} Kg`;
                 td4.textContent = cursor.value.market_price;
@@ -59,6 +64,10 @@ window.onload = () => {
                 cart.appendChild(tr);
 
                 deleteButton.onclick = deleteItem;
+
+                if(cursor.value.style == 'palengke'){
+                    
+                }
 
                 cursor.continue();
             } else {
