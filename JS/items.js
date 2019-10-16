@@ -99,10 +99,25 @@ const displaySubitems = () => {
 	});
 }
 
+const toggleShadow = id => {
+	let articles = document.querySelectorAll('.card-2col');
+
+	articles.forEach(art => {
+		art.classList.remove('shadow-box');
+	});
+
+	let parent = document.querySelector(`#${id}`).parentNode;
+	
+	parent.classList.add('shadow-box');
+}
+
 const nextStep = (e) => {
 	console.log(e.target.value)
 	console.log(e.target.dataset.sizeList);
 	console.log(e.target.dataset.priceList);
+	console.log('id', e.target.id)
+
+	toggleShadow(e.target.id);
 
 	let item_prod = e.target.value;
 	let size_arr = e.target.dataset.sizeList.split(':');

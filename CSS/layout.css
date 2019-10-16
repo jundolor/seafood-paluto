@@ -185,9 +185,14 @@ input.radio-image{display: none}
 input.radio-image + label{
 	cursor: pointer;
 }
-
+/*
 input.radio-image:checked + label > img{
   border: 1px solid #34495E;
+  box-shadow: 0 0 3px 3px #95A5A6;
+}
+*/
+.shadow-box{
+	border: 1px solid #34495E;
   box-shadow: 0 0 3px 3px #95A5A6;
 }
 
