@@ -1,0 +1,40 @@
+{
+	"dishes" : 
+	[
+		{
+			"id" : "d1",
+			"name": "Baked with Cheese",
+			"kg" : "2",
+			"img" : "images/paluto/dish1.png",
+			"price" : "200"
+		},
+		{
+			"id" : "d2",
+			"name": "Buttered Garlic",
+			"kg" : "2",
+			"img" : "images/paluto/dish2.png",
+			"price" : "250"
+		},
+		{
+			"id" : "d3",
+			"name": "Sinigang",
+			"kg" : "2",
+			"img" : "images/paluto/dish3.png",
+			"price" : "300"
+		},
+		{
+			"id" : "d4",
+			"name": "Fried with Tausi",
+			"kg" : "",
+			"img" : "images/paluto/dish4.png",
+			"price" : "280"
+		},
+		{
+			"id" : "d5",
+			"name": "Steamed with Oyster Sauce",
+			"kg" : "2",
+			"img" : "images/paluto/dish5.png",
+			"price" : "240"
+		}
+	]
+}

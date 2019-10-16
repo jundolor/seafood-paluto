@@ -361,5 +361,15 @@ btnNext.addEventListener('click', e => {
 
 	reset();
 
-	window.location.href = `order_summary.html?orders=${orders_url}`;
+	switch(style){
+		case "palengke":
+			window.location.href = `order_summary.html?orders=${orders_url}`;
+			break;
+		case "paluto" :
+			window.location.href = `paluto.html?orders=${orders_url}`;
+			break;
+		//case
+	}
+
+	
 });

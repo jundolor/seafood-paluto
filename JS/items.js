@@ -107,7 +107,7 @@ const toggleShadow = id => {
 	});
 
 	let parent = document.querySelector(`#${id}`).parentNode;
-	
+
 	parent.classList.add('shadow-box');
 }
 
@@ -211,7 +211,16 @@ const order_summary_palengke = () => {
 
 	reset();
 
-	window.location.href = `order_summary.html?orders=${orders_url}`;
+	switch(style){
+		case "palengke":
+			window.location.href = `order_summary.html?orders=${orders_url}`;
+			break;
+		case "paluto" :
+			window.location.href = `paluto.html?orders=${orders_url}`;
+			break;
+		//case
+	}
+
 }
 
 btnNext.addEventListener('click', e => {

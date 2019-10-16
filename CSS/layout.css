@@ -201,7 +201,47 @@ input.radio-image:checked + label > img{
 	grid-template-columns: auto auto auto auto;
 }
 
+.grid-item{
+	padding: 25px;
+}
+
 .grid-item img{
 	width: 100%;
 	height: auto;
+}
+
+.grid-center-text{
+	vertical-align: middle;
+	text-align: center;
+}
+
+dialog {
+    background-color: lightgray;
+    padding: 0;
+    border: 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 15px black;
+    width: 30%;
+}
+
+/* Style the dialog content */
+dialog h1 {
+    text-align: center;
+    background-color: #2F4F4F;
+    color: white;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    margin: 0;
+    padding: 12pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+
+dialog>#dlgcontent {
+    margin: 5pt;
+}
+
+/* Create a CSS style for the dialog backdrop */
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
 }

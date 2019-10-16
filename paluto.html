@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Seafood Paluto Crabs</title>
-	<meta name="description" content="Crabs served fresh. We also deliver right to your doorstep">	
+	<title>Seafood Paluto Restaurants</title>
+	<meta name="description" content="Place your seafood. We also deliver right to your doorstep">	
 
 	<link rel="stylesheet" href="style-menus.css" type="text/css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -88,93 +88,29 @@
     	</section><!-- .menu-section -->
         <div class="content">
             <article class="post-content">
-                <h3>Choose type of crab</h3>
-                <section class="app">
-                    <ul class="hs">
-                        <li class="order-main" data-main-order="Alimango">
-                            <img src="images/palengke/crabs.png" alt="Our market">
-                            <h2>Alimango</h2>
-                            <p>Order Now <i class="fa fa-arrow-circle-right"></i></p>
-                        </li>
-                        <li class="order-main" data-main-order="Alimasag">
-                            <img src="images/palengke/alimasag.png" alt="Our market">
-                            <h2>Alimasag</h2>
-                            <p>Order Now <i class="fa fa-arrow-circle-right"></i></p>
-                        </li>
-                        <li class="order-main" data-main-order="Sipit">
-                            <img src="images/palengke/sipit.png" alt="Our market">         
-                            <h2>Sipit</h2>    
-                            <p>Order Now <i class="fa fa-arrow-circle-right"></i></p>            
-                        </li>
-                        <li class="order-main" data-main-order="Crablets">
-                            <img src="images/palengke/crablets.png" alt="Our market">
-                            <h2>Crablets</h2>
-                            <p>Order Now <i class="fa fa-arrow-circle-right"></i></p>
-                        </li>
-                    </ul>
-                    <input type="hidden" name="product" id="product" value="Crab">
-                    <input type="hidden" name="selected-choice" id="selected-choice" value="">
-                </section><!--.app-->
-                
-                <section id="gender" class="post-content">
-                    <h3>Choose Gender</h3>
-                    <form id="flex-form-gender" class="flex-form form-init">
-                        <section class="form-group">
-                            <ul style="list-style: none;">
-                            </ul>
-                        </section>
-                    </form>
-                </section>
-                <section id="size" class="post-content">
-                    <h3>Choose Size</h3>
-                    <form id="flex-form-size" class="flex-form form-init">
-                        <section class="form-group">
-                            <ul style="list-style: none;">
-                            </ul>
-                        </section>
-                    </form>
-                </section>
-                <section id="weight" class="post-content">
-                    <h3>Choose Weight</h3>
-                    <form id="flex-form-weight"" class="flex-form form-init">
-                        <section class="form-group">
-                            <ul id="form-fields-weight">
-                                <li>
-                                    <label for="product-weight">Kg Weight</label>
-                                    <select class="select-menu" id="product-weight" name="product-weight">
-                                        <option value="0.5">0.5</option>
-                                        <option value="1">1</option>
-                                        <option value="1.5">1.5</option>
-                                        <option value="2">2</option>
-                                        <option value="2.5">2.5</option>
-                                        <option value="3">3</option>
-                                        <option value="3.5">3.5</option>
-                                    </select>
-                                </li>
-                                <li><div id="computed_price"></div></li>
-                                <li><button id="next">Continue to order  <i class="fa fa-arrow-circle-right"></i></button></li>
-                            </ul>
-                        </section>
-                        
-                        
-                    </form>
+                <section class="grid-container-4col">
+                    <article id="itmImg" class="grid-item"></article>
+                    <article class="grid-item"><span id="itmName" class="grid-center-text"></span></article>
+                    <article id="itmKg" class="grid-item grid-center-text"></article>
+                    <article id="itmTotal" class="grid-item grid-center-text"></article>
                 </section>
                 <section>
-
+                    <table id="dish-orders"></table>
                 </section>
+                <section>
+                    <button id="add-dish"><i class="fa fa-plus-circle"></i></button>
+                </section>
+                <dialog id="dialog1">
+                    <div id="dlgcontent">
+                    <h1>Select a dish</h1>
+                        <section id="cards" class="cards-2col"></section>
+                        <button id="okBtn">OK</button>
+                        <button id="cancelBtn">Cancel</button>
+                    </div>
+                </dialog>
             </article>
             <div class="sidebar">
-                <div class="squish-container">
-                    <h3>Breadcrumbs</h3>
-                    <nav class="example-menu">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="palengke.html">Palengke</a></li>
-                            <li><a href="crabs.html">Crabs</a></li>
-                            
-                        </ul>
-                    </nav><!-- .example-menu -->
-                </div>
+                <p>side bar</p>
             </div>
         </div>
         <div class="centered">
@@ -198,7 +134,6 @@
         </div><!-- .centered -->
     </footer>
     <script src="JS/main.js"></script>
-    <!--<script src="JS/choice.js"></script>-->
-    <script src="JS/crab.js?10009"></script>
+    <script src="JS/paluto.js"></script>
 </body>
 </html>
