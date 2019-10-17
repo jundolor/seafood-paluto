@@ -201,8 +201,18 @@ input.radio-image:checked + label > img{
 	grid-template-columns: auto auto auto auto;
 }
 
+.grid-container-3col{
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+.grid-container-2col{
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
 .grid-item{
-	padding: 25px;
+	padding: 5px;
 }
 
 .grid-item img{
@@ -221,7 +231,11 @@ dialog {
     border: 0;
     border-radius: 0.5rem;
     box-shadow: 0 0 15px black;
-    width: 30%;
+    
+}
+
+#dialog-select-dish{
+	width: 70%;
 }
 
 /* Style the dialog content */
@@ -244,4 +258,11 @@ dialog>#dlgcontent {
 /* Create a CSS style for the dialog backdrop */
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (min-width: 52em){
+	#dialog-select-dish{
+    	width: 40%;
+    }
+
 }

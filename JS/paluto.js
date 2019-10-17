@@ -14,7 +14,7 @@ let paluto = objOrders.paluto;
 let paluto_price = objOrders.paluto_price;
 
 const add_dish = document.querySelector('#add-dish');
-const dialog = document.querySelector('#dialog1');
+const dlg = document.querySelector('#dialog-select-dish');
 
 const url = `JS/json/dishes.json`;
 const dishes = [];
@@ -55,19 +55,25 @@ document.querySelector('#itmTotal').appendChild(txt3);
 
 window.addEventListener("load", () => {
 	add_dish.addEventListener('click', () => {
-		dialog.showModal()
+		removeShadow();
+		
+		dlg.showModal();
+
+		document.querySelector('#dialog-select-dish').scrollIntoView({ 
+		  behavior: 'smooth' 
+		});
 	});
 
 	// add event listeners for the OK and Cancel buttons
     document.getElementById("okBtn").addEventListener("click", function () {
-        dlg = document.getElementById("dialog1");
+        //dlg = document.getElementById("dialog1");
         // Check to see if the dialog is in fact open, if so then close it with "OK"
         if (dlg.open) {
             dlg.close("OK");
         }
     })
     document.getElementById("cancelBtn").addEventListener("click", function () {
-        dlg = document.getElementById("dialog1");
+        //dlg = document.getElementById("dialog1");
         // Check to see if the dialog is in fact open, if so then close it with "Cancel"
         if (dlg.open) {
             dlg.close("Cancel");
@@ -75,7 +81,7 @@ window.addEventListener("load", () => {
     })
 
     // event listeners for the dialog itself - close and cancel
-    dlg = document.getElementById("dialog1");
+    //dlg = document.getElementById("dialog1");
     dlg.addEventListener("close", function (evt) {
         console.log("Dialog closed: ", dlg.returnValue)
     });
@@ -141,12 +147,17 @@ const displaySubitems = () => {
 	})
 }
 
-const toggleShadow = id => {
+const removeShadow = () => {
 	let articles = document.querySelectorAll('.card-2col');
 
 	articles.forEach(art => {
 		art.classList.remove('shadow-box');
 	});
+}
+
+const toggleShadow = id => {
+
+	removeShadow();
 
 	let parent = document.querySelector(`#${id}`).parentNode;
 

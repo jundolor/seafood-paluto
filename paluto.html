@@ -88,11 +88,14 @@
     	</section><!-- .menu-section -->
         <div class="content">
             <article class="post-content">
-                <section class="grid-container-4col">
+                <section class="grid-container-2col">
                     <article id="itmImg" class="grid-item"></article>
-                    <article class="grid-item"><span id="itmName" class="grid-center-text"></span></article>
-                    <article id="itmKg" class="grid-item grid-center-text"></article>
-                    <article id="itmTotal" class="grid-item grid-center-text"></article>
+                    <article class="grid-item">
+                        <h3 id="itmName" style="margin-top: 5px; margin-bottom: 5px;"></h3>
+                        <p id="itmKg" style="margin-top: 5px; margin-bottom: 5px;"></p>
+                        <p id="itmTotal" style="margin-top: 5px; margin-bottom: 5px;"></p>
+                    </article>
+                    
                 </section>
                 <section>
                     <table id="dish-orders"></table>
@@ -100,7 +103,7 @@
                 <section>
                     <button id="add-dish"><i class="fa fa-plus-circle"></i></button>
                 </section>
-                <dialog id="dialog1">
+                <dialog id="dialog-select-dish">
                     <div id="dlgcontent">
                     <h1>Select a dish</h1>
                         <section id="cards" class="cards-2col"></section>
