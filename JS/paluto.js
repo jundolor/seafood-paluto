@@ -29,6 +29,7 @@ let weight_limit = parseFloat(weight);
 const selected_dish = document.querySelector('#selected-dish');
 const selected_dish_price = document.querySelector('#selected-dish-price');
 const select_kg = document.querySelector('#selected-kg');
+const tbl_dish_order = document.querySelector('#dish-orders');
 
 //populate the item info
 const txt1 = document.createTextNode(`${subitem} @ Php ${unit_price}`);
@@ -77,6 +78,10 @@ window.addEventListener("load", () => {
         // Check to see if the dialog is in fact open, if so then close it with "OK"
         if (dlg.open) {
             dlg.close("OK");
+
+            add_dish_order();
+            update_weight_limit();
+            check_dialog_button();
         }
     })
     document.getElementById("cancelBtn").addEventListener("click", function () {
@@ -152,6 +157,50 @@ const displaySubitems = () => {
 
 		cards.appendChild(article);
 	})
+}
+
+const add_dish_order = () => {
+	let dsh_name = selected_dish.value;
+	let dsh_prize = selected_dish_price.value;
+	let dsh_kg = select_kg.value;
+
+	let tr = document.createElement('tr');
+
+	let td1 = document.createElement('td');
+	let td2 = document.createElement('td');
+	let td3 = document.createElement('td');
+	let td4 = document.createElement('td');
+	let td5 = document.createElement('td');
+
+	let img = document.createElement('img');
+	let dsh_selected = document.querySelector('input[name="dish"]:checked').nextSibling.childNodes[0].src;
+	img.src = dsh_selected;
+	img.style.width = '50px';
+	img.style.height = 'auto';
+
+
+	td1.appendChild(img);
+	td2.textContent = dsh_name;
+	td3.textContent = `${dsh_kg} Kg`;
+	td4.textContent = 'Special Instruction';
+	td5.textContent = `Php ${dsh_prize}`;
+
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	tr.appendChild(td4);
+	tr.appendChild(td5);
+
+	tbl_dish_order.appendChild(tr);
+}
+
+const update_weight_limit = () => {
+	let dsh_kg = parseFloat(select_kg.value);
+	weight_limit -= dsh_kg;
+}
+
+const check_dialog_button = () => {
+	if(weight_limit < 0.5) add_dish.disabled = 'true';
 }
 
 const removeShadow = () => {
