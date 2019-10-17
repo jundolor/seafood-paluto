@@ -107,7 +107,19 @@
                     <div id="dlgcontent">
                     <h1>Select a dish</h1>
                         <section id="cards" class="cards-2col"></section>
-                        <button id="okBtn">OK</button>
+                        <form id="flex-form-dish" class="flex-form form-full">
+                            <section class="form-group">
+                                <ul style="list-style: none;">
+                                    <li><label for="selected-dish">Selected Dish</label></li>
+                                    <li><input type="text" name="selected-dish" id="selected-dish" disabled></li>
+                                    <li><label for="selected-dish">Selected Dish Price</label></li>
+                                    <li><input type="text" name="selected-dish-price" id="selected-dish-price" disabled></li>
+                                    <li><label for="selected-kg">Select Kg</label></li>
+                                    <li><select id="selected-kg"></select></li>
+                                </ul>
+                            </section>
+                        </form>
+                        <button id="okBtn" disabled>OK</button>
                         <button id="cancelBtn">Cancel</button>
                     </div>
                 </dialog>

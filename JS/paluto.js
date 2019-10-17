@@ -8,6 +8,7 @@ const img = objOrders.img;
 const subitem = objOrders.subitem;
 const prod_details = objOrders.prod_details;
 const weight = objOrders.weight;
+const unit_price = objOrders.unit_price;
 const market_price = objOrders.market_price;
 const restaurant = objOrders.restaurant;
 let paluto = objOrders.paluto;
@@ -23,8 +24,14 @@ const cards = document.querySelector('#cards');
 let itmImg = document.createElement('img');
 itmImg.src = img;
 
+let weight_limit = parseFloat(weight);
+
+const selected_dish = document.querySelector('#selected-dish');
+const selected_dish_price = document.querySelector('#selected-dish-price');
+const select_kg = document.querySelector('#selected-kg');
+
 //populate the item info
-const txt1 = document.createTextNode(`${subitem} @ Php ${market_price}`);
+const txt1 = document.createTextNode(`${subitem} @ Php ${unit_price}`);
 const txt2 = document.createTextNode(`Ordered: ${weight} Kg`);
 const txt3 = document.createTextNode('Total Palengke')
 
@@ -55,8 +62,8 @@ document.querySelector('#itmTotal').appendChild(txt3);
 
 window.addEventListener("load", () => {
 	add_dish.addEventListener('click', () => {
-		removeShadow();
-		
+		reset_dialog();
+
 		dlg.showModal();
 
 		document.querySelector('#dialog-select-dish').scrollIntoView({ 
@@ -155,6 +162,24 @@ const removeShadow = () => {
 	});
 }
 
+const reset_dialog = () => {
+	selected_dish.value = '';
+	selected_dish_price.value = '';
+	select_kg.innerHTML = '';
+
+	for(i = 0.5; i <= weight_limit; i += 0.5){
+		let opt = document.createElement('option');
+		opt.value = i;
+
+		let txt = document.createTextNode(i);
+		opt.appendChild(txt);
+
+		select_kg.appendChild(opt);
+	}
+
+	removeShadow();
+}
+
 const toggleShadow = id => {
 
 	removeShadow();
@@ -170,4 +195,13 @@ const nextStep = e => {
 	console.log('id', e.target.id)
 
 	toggleShadow(e.target.id);
+
+	selected_dish.value = e.target.value;
+	selected_dish_price.value = e.target.dataset.price;
+
+	if(document.getElementById("okBtn").disabled) document.getElementById("okBtn").disabled = false;
+
+	document.querySelector('#flex-form-dish').scrollIntoView({
+		behavior: 'smooth'
+	});
 }
