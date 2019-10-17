@@ -31,10 +31,14 @@ const selected_dish_price = document.querySelector('#selected-dish-price');
 const select_kg = document.querySelector('#selected-kg');
 const tbl_dish_order = document.querySelector('#dish-orders');
 
+const computed_paluto_disp = document.querySelector('#computed-paluto');
+let computed_paluto =0;
+
 //populate the item info
 const txt1 = document.createTextNode(`${subitem} @ Php ${unit_price}`);
 const txt2 = document.createTextNode(`Ordered: ${weight} Kg`);
-const txt3 = document.createTextNode('Total Palengke')
+const txt3 = document.createTextNode('Total Palengke');
+
 
 document.querySelector('#itmImg').appendChild(itmImg);
 document.querySelector('#itmName').appendChild(txt1);
@@ -82,6 +86,7 @@ window.addEventListener("load", () => {
             add_dish_order();
             update_weight_limit();
             check_dialog_button();
+            compute_total_paluto();
         }
     })
     document.getElementById("cancelBtn").addEventListener("click", function () {
@@ -200,7 +205,17 @@ const update_weight_limit = () => {
 }
 
 const check_dialog_button = () => {
-	if(weight_limit < 0.5) add_dish.disabled = 'true';
+	if(weight_limit < 0.5){
+		add_dish.disabled = 'true';
+		add_dish.style.color = 'red'
+	} 
+}
+
+const compute_total_paluto = () => {
+	let dsh_prize = parseFloat(selected_dish_price.value);
+
+	computed_paluto += dsh_prize;
+	computed_paluto_disp.textContent = `Php ${computed_paluto}`;
 }
 
 const removeShadow = () => {
@@ -248,7 +263,10 @@ const nextStep = e => {
 	selected_dish.value = e.target.value;
 	selected_dish_price.value = e.target.dataset.price;
 
-	if(document.getElementById("okBtn").disabled) document.getElementById("okBtn").disabled = false;
+	if(document.getElementById("okBtn").disabled){
+		document.getElementById("okBtn").disabled = false;
+		document.getElementById("okBtn").style.color = 'inherit';
+	} 
 
 	document.querySelector('#flex-form-dish').scrollIntoView({
 		behavior: 'smooth'
