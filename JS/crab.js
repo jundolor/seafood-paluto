@@ -349,6 +349,7 @@ btnNext.addEventListener('click', e => {
 	ordersObj.img = img;
 	ordersObj.subitem = prod_type;
 	ordersObj.prod_details = prod_details;
+	ordersObj.unit_price = unit_price;
 	ordersObj.weight = product_weight.value;
 	ordersObj.market_price = crab_price;
 	ordersObj.restaurant = '';

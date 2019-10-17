@@ -199,6 +199,7 @@ const order_summary_palengke = () => {
 	ordersObj.img = img;
 	ordersObj.subitem = subitem_prod;
 	ordersObj.prod_details = prod_details;
+	ordersObj.unit_price = prize;
 	ordersObj.weight = product_weight.value;
 	ordersObj.market_price = total_prize;
 	ordersObj.restaurant = '';
