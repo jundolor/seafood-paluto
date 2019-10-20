@@ -1,32 +1,32 @@
 {
-	"Bilao":[
+	"bilao":[
 		{
-			"subtype": "Palabok Small", 
+			"subtype": "Palabok Solo", 
 			"img": "images/bilao/palabok-small.jpg", 
 			"size": "Small", 
 			"persons": "1-2", 
 			"prize": "350"
 		},
 		{
-			"subtype": "Palabok Medium", 
-			"img": "images/bilao/.jpg", 
+			"subtype": "Palabok Family", 
+			"img": "images/bilao/palabok-medium.jpg", 
 			"size": "Medium", 
 			"persons": "3-5", 
 			"prize": "500"
 		},
 		{
-			"subtype": "Palabok Large", 
-			"img": "images/bilao/.jpg", 
+			"subtype": "Palabok Barkada", 
+			"img": "images/bilao/palabok-large.jpg", 
 			"size": "Large", 
 			"persons": "6-9", 
 			"prize": "800"
 		},
 		{
-			"subtype": "Palabok Extra Large", 
-			"img": "images/bilao/.jpg", 
+			"subtype": "Palabok Fiesta", 
+			"img": "images/bilao/palabok-extra-large.jpg", 
 			"size": "Extra Large", 
 			"persons": "10+", 
 			"prize": "1000"
-		},
+		}
 	]
 }
