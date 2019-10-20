@@ -77,6 +77,12 @@ const init_radio_img_list = () => {
 
 			document.querySelector(`#${listCounterPart}`).checked = true;
 
+			let articles = document.querySelectorAll('.radio-image');
+
+			articles.forEach(art => {
+				art.parentNode.classList.remove('shadow-box');
+			});
+
 			let rad_checked = document.querySelector('input[name="acc-resto"]:checked');
 			rad_checked.parentNode.classList.add('shadow-box');
 
@@ -101,6 +107,12 @@ const init_radio_img_list = () => {
 			});
 
 			document.querySelector(`#${imgCounterPart}`).checked = true;
+
+			let articles = document.querySelectorAll('.radio-image');
+
+			articles.forEach(art => {
+				art.parentNode.classList.remove('shadow-box');
+			});
 
 			let rad_checked = document.querySelector('input[name=acc-resto]:checked');
 			rad_checked.parentNode.classList.add('shadow-box');
