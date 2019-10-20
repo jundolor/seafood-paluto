@@ -21,7 +21,7 @@ const radio_list = document.querySelectorAll('.radio-list');
 
 init_radio_img_list();
 
-const btnNext  document.querySelector('#next');
+const btnNext = document.querySelector('#next');
 
 btnNext.addEventListener('click', e => {
 	e.preventDefault();

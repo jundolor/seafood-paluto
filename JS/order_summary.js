@@ -33,10 +33,62 @@ const addLi = (value, label) => {
 	}
 }
 
+const addLiTable = () => {
+	let table = document.createElement('table');
+	table.id = 'dish-orders'
+
+	let paluto_arr = JSON.parse(paluto);
+
+	paluto_arr.forEach(p => {
+		let dsh_img = p.imgSrc;
+		let dsh_name = p.dsh_name;
+		let dsh_kg = p.dsh_kg;
+		let dsh_si = p.si;
+		let dsh_prize = p.dsh_prize;
+
+		let tr = document.createElement('tr');
+
+		let td1 = document.createElement('td');
+		let td2 = document.createElement('td');
+		let td3 = document.createElement('td');
+		let td4 = document.createElement('td');
+		let td5 = document.createElement('td');
+
+		let img = document.createElement('img');
+		img.src = dsh_img
+		img.style.width = '50px';
+		img.style.height = 'auto';
+
+		td1.appendChild(img);
+		td2.textContent = dsh_name;
+		td3.textContent = `${dsh_kg} Kg`;
+		td4.textContent = `${dsh_si}`;
+		td5.textContent = `Php ${dsh_prize}`;
+
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		tr.appendChild(td5);
+
+		table.appendChild(tr);
+	});
+
+	let li = document.createElement('li');
+	li.appendChild(table);
+	ul_info.appendChild(li);
+}
+
 addLi(`${subitem}`, `${subitem}`);
-addLi(`${prod_details}`, `${prod_details}`);
-addLi(`${weight}`, `Weight: ${weight} kg`);
-addLi(`${market_price}`,`Price: ${market_price}`);
+if(style == 'palengke'){
+	addLi(`${prod_details}`, `${prod_details}`);
+	addLi(`${weight}`, `Weight: ${weight} kg`);
+	addLi(`${market_price}`,`Price: ${market_price}`);
+}
+else if(style == 'paluto' && restaurant != ''){
+	addLiTable()
+}
+
 
 const initCart = (name, contact, date, time) => {
 	//USE INDEXEDdv
@@ -126,6 +178,13 @@ window.onload = () => {
 	btnNext.addEventListener('click', e => {
 		e.preventDefault();
 		addData();
+
+		if(style == 'palengke'){
+			addData();
+		}
+		else if(style == 'paluto' && restaurant != ''){
+			//addLiTable()
+		}
 	});
 }
 
