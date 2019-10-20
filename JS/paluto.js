@@ -215,6 +215,7 @@ const add_dish_order = () => {
 	objDishSelected.dsh_kg = dsh_kg;
 	objDishSelected.si = 'Special Instruction';
 	objDishSelected.dsh_prize = dsh_prize;
+	objDishSelected.style = style;
 
 	paluto_arr.push(objDishSelected);
 
@@ -244,6 +245,7 @@ const add_dish_order = () => {
 		objRaw.dsh_kg = kg_diff;
 		objRaw.si = 'Special Instruction';
 		objRaw.dsh_prize = dsh_prize;
+		objRaw.style = 'palengke';
 		insertTableDishOrder(objRaw);
 	}
 
@@ -371,7 +373,7 @@ const order_summary_palengke = () => {
 const select_restaurant = () => {
 	//paluto_arr, if there is excess, add to paluto_arr
 	let kg_market = parseFloat(weight);
-	
+
 	let kg_total = 0;
 
 	paluto_arr.forEach(dsh => {
@@ -393,6 +395,7 @@ const select_restaurant = () => {
 		objRaw.dsh_kg = kg_diff;
 		objRaw.si = 'Special Instruction';
 		objRaw.dsh_prize = dsh_prize;
+		objRaw.style = 'palengke';
 		
 		paluto_arr.push(objRaw);
 	}
