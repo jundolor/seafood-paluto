@@ -11,7 +11,8 @@ const weight = objOrders.weight;
 const unit_price = objOrders.unit_price;
 const market_price = objOrders.market_price;
 const restaurant = objOrders.restaurant;
-let paluto = objOrders.paluto;
+let paluto = ''; //objOrders.paluto;
+let paluto_arr = [];
 let paluto_price = objOrders.paluto_price;
 
 const add_dish = document.querySelector('#add-dish');
@@ -164,10 +165,12 @@ const displaySubitems = () => {
 	})
 }
 
-const add_dish_order = () => {
-	let dsh_name = selected_dish.value;
-	let dsh_prize = selected_dish_price.value;
-	let dsh_kg = select_kg.value;
+const insertTableDishOrder = objDish => {
+	let dsh_img = objDish.imgSrc;
+	let dsh_name = objDish.dsh_name;
+	let dsh_kg = objDish.dsh_kg;
+	let dsh_si = objDish.si;
+	let dsh_prize = objDish.dsh_prize;
 
 	let tr = document.createElement('tr');
 
@@ -178,16 +181,14 @@ const add_dish_order = () => {
 	let td5 = document.createElement('td');
 
 	let img = document.createElement('img');
-	let dsh_selected = document.querySelector('input[name="dish"]:checked').nextSibling.childNodes[0].src;
-	img.src = dsh_selected;
+	img.src = dsh_img
 	img.style.width = '50px';
 	img.style.height = 'auto';
-
 
 	td1.appendChild(img);
 	td2.textContent = dsh_name;
 	td3.textContent = `${dsh_kg} Kg`;
-	td4.textContent = 'Special Instruction';
+	td4.textContent = `${dsh_si}`;
 	td5.textContent = `Php ${dsh_prize}`;
 
 	tr.appendChild(td1);
@@ -197,6 +198,53 @@ const add_dish_order = () => {
 	tr.appendChild(td5);
 
 	tbl_dish_order.appendChild(tr);
+};
+
+const add_dish_order = () => {
+	let dsh_name = selected_dish.value;
+	let dsh_prize = selected_dish_price.value;
+	let dsh_kg = select_kg.value;
+
+	let dsh_selected = document.querySelector('input[name="dish"]:checked').nextSibling.childNodes[0].src;
+	
+	let objDishSelected = Object.create(null);
+	objDishSelected.imgSrc = dsh_selected;
+	objDishSelected.dsh_name = dsh_name;
+	objDishSelected.dsh_kg = dsh_kg;
+	objDishSelected.si = 'Special Instruction';
+	objDishSelected.dsh_prize = dsh_prize;
+
+	paluto_arr.push(objDishSelected);
+
+	let kg_market = parseFloat(weight);
+
+	let kg_total = 0;
+
+	tbl_dish_order.innerHTML = '';
+
+	paluto_arr.forEach(dsh => {
+
+		insertTableDishOrder(dsh);
+
+		let dsh_kg = dsh.dsh_kg;
+
+		kg_total += parseFloat(dsh_kg);
+	});
+
+	if(kg_market != kg_total){
+		let kg_diff = kg_market - kg_total;
+		let dsh_prize = kg_diff * parseFloat(unit_price);
+
+		let objRaw =  Object.create(null);
+
+		objRaw.imgSrc = img;
+		objRaw.dsh_name = subitem;
+		objRaw.dsh_kg = kg_diff;
+		objRaw.si = 'Special Instruction';
+		objRaw.dsh_prize = dsh_prize;
+		insertTableDishOrder(objRaw);
+	}
+
 }
 
 const update_weight_limit = () => {
@@ -215,7 +263,29 @@ const compute_total_paluto = () => {
 	let dsh_prize = parseFloat(selected_dish_price.value);
 
 	computed_paluto += dsh_prize;
-	computed_paluto_disp.textContent = `Php ${computed_paluto}`;
+
+	let totals = `Total Paluto: Php ${computed_paluto}`;
+	
+	let kg_market = parseFloat(weight);
+
+	let kg_total = 0;
+
+	paluto_arr.forEach(dsh => {
+
+		let dsh_kg = dsh.dsh_kg;
+
+		kg_total += parseFloat(dsh_kg);
+	});
+
+	if(kg_market != kg_total) {
+		let kg_diff = kg_market - kg_total;
+		let dsh_prize = kg_diff * parseFloat(unit_price);
+
+		totals += `<br>Total Palengke: Php ${dsh_prize}`;
+	}
+
+	computed_paluto_disp.innerHTML = totals;
+
 }
 
 const removeShadow = () => {
