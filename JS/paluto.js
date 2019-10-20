@@ -284,6 +284,8 @@ const compute_total_paluto = () => {
 		totals += `<br>Total Palengke: Php ${dsh_prize}`;
 	}
 
+	totals += '<br>1 kg is good for 3 persons'
+
 	computed_paluto_disp.innerHTML = totals;
 
 }
