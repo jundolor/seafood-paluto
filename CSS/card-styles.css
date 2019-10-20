@@ -27,7 +27,7 @@ body {
 	text-decoration: none;
 }
 
-.card a:hover, .card-2col a:hover, .card-choice a:hover, ul.hs li:hover {
+.card a:hover, .card-2col a:hover, .card-choice a:hover, ul.hs li:hover, ul.hs-home-bilao li:hover{
 	box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
 }
 
@@ -35,7 +35,7 @@ body {
   box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
 }
 
-ul.hs li:hover{
+ul.hs li:hover, ul.hs-home-bilao li:hover{
   cursor: pointer;
 }
 
@@ -154,7 +154,7 @@ body{
   grid-column: 1 / -1;
 }
 
-.hs {
+.hs, .hs-home-bilao {
   display: grid;
   grid-gap: calc(var(--gutter) / 2);
   grid-template-columns: repeat(6, calc(90% - var(--gutter) * 2));
@@ -168,12 +168,18 @@ body{
   padding-bottom: 0.12em;
 }
 
+.hs-home-bilao{
+  grid-template-columns: repeat(6, calc(50% - var(--gutter) * 2));
+}
+
 @media screen and (min-width: 60em){
     .hs{
         grid-template-columns: repeat(6, calc(50% - var(--gutter) * 2));
     }
 
-
+    .hs-home-bilao{
+      grid-template-columns: repeat(6, calc(30% - var(--gutter) * 2));
+    }
     
 }
 
@@ -209,7 +215,7 @@ h3 {
   overflow-y: scroll;*/
 }
 
-.hs > li,
+.hs > li, .hs-home-bilao > li,
 .item {
   scroll-snap-align: center;
   /*padding: calc(var(--gutter) / 2 * 1.5);*/
@@ -221,7 +227,7 @@ h3 {
   border-radius: 8px;
 }
 
-.hs a{
+.hs a, .hs-home-bilao a{
     text-decoration: none;
     color: black;
 }
