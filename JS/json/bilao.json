@@ -1,0 +1,32 @@
+{
+	"Bilao":[
+		{
+			"subtype": "Palabok Small", 
+			"img": "images/bilao/palabok-small.jpg", 
+			"size": "Small", 
+			"persons": "1-2", 
+			"prize": "350"
+		},
+		{
+			"subtype": "Palabok Medium", 
+			"img": "images/bilao/.jpg", 
+			"size": "Medium", 
+			"persons": "3-5", 
+			"prize": "500"
+		},
+		{
+			"subtype": "Palabok Large", 
+			"img": "images/bilao/.jpg", 
+			"size": "Large", 
+			"persons": "6-9", 
+			"prize": "800"
+		},
+		{
+			"subtype": "Palabok Extra Large", 
+			"img": "images/bilao/.jpg", 
+			"size": "Extra Large", 
+			"persons": "10+", 
+			"prize": "1000"
+		},
+	]
+}
