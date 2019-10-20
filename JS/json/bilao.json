@@ -1,6 +1,7 @@
 {
 	"bilao":[
 		{
+			"id": "b01",
 			"subtype": "Palabok Solo", 
 			"img": "images/bilao/palabok-small.jpg", 
 			"size": "Small", 
@@ -8,6 +9,7 @@
 			"prize": "350"
 		},
 		{
+			"id": "b02",
 			"subtype": "Palabok Family", 
 			"img": "images/bilao/palabok-medium.jpg", 
 			"size": "Medium", 
@@ -15,6 +17,7 @@
 			"prize": "500"
 		},
 		{
+			"id": "b03",
 			"subtype": "Palabok Barkada", 
 			"img": "images/bilao/palabok-large.jpg", 
 			"size": "Large", 
@@ -22,6 +25,7 @@
 			"prize": "800"
 		},
 		{
+			"id": "b04",
 			"subtype": "Palabok Fiesta", 
 			"img": "images/bilao/palabok-extra-large.jpg", 
 			"size": "Extra Large", 

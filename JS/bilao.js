@@ -16,8 +16,38 @@ const bilao = document.querySelector('#bilao');
 	})
 })();
 
+const bilao_order = id => {
+	let order = document.querySelector(`#${id}`);
+
+	subtype = order.dataset.subtype;
+	img_bilao = order.dataset.img;
+	size = order.dataset.size;
+	persons = order.dataset.persons;
+	prize = order.dataset.prize;
+
+	let ordersObj = Object.create(null);
+	ordersObj.style = 'palengke';
+	ordersObj.item = 'Bilao';
+	ordersObj.img = img_bilao;
+	ordersObj.subitem = subtype;
+	ordersObj.prod_details = `Size: ${size} / Good for ${persons} persons`;
+	ordersObj.unit_price = prize;
+	ordersObj.weight = '';
+	ordersObj.market_price = prize;
+	ordersObj.restaurant = '';
+	ordersObj.paluto = '';
+	ordersObj.paluto_price = '';
+
+	let str = JSON.stringify(ordersObj);
+
+	let orders_url = encodeURI(str);
+
+	window.location.href = `order_summary.html?orders=${orders_url}`;
+};
+
 const populate_bilao = data => {
 	data.bilao.forEach(el => {
+		let id = el.id;
 		let subtype = el.subtype;
 		let img_bilao = el.img;
 		let size = el.size;
@@ -25,6 +55,9 @@ const populate_bilao = data => {
 		let prize = el.prize;
 
 		let li = document.createElement('li');
+		li.id = id;
+		li.dataset.subtype = subtype;
+		li.dataset.img = img_bilao;
 		li.dataset.size = size;
 		li.dataset.persons = persons;
 		li.dataset.prize = prize;
@@ -50,5 +83,7 @@ const populate_bilao = data => {
 		li.appendChild(p);
 
 		bilao.appendChild(li);
+
+		li.addEventListener('click', () => {bilao_order(id)});
 	})
 };
