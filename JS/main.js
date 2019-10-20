@@ -76,6 +76,10 @@ const init_radio_img_list = () => {
 			});
 
 			document.querySelector(`#${listCounterPart}`).checked = true;
+
+			let rad_checked = document.querySelector('input[name="acc-resto"]:checked');
+			rad_checked.parentNode.classList.add('shadow-box');
+
 			document.querySelector("#selected_restaurant").textContent = `Selected Restaurant: ${value}`;
 
 			document.querySelector('#selected_restaurant').scrollIntoView({ 
@@ -97,6 +101,9 @@ const init_radio_img_list = () => {
 			});
 
 			document.querySelector(`#${imgCounterPart}`).checked = true;
+
+			let rad_checked = document.querySelector('input[name=acc-resto]:checked');
+			rad_checked.parentNode.classList.add('shadow-box');
 
 			let value = document.querySelector('input[name=acc-resto]:checked').value;
 			document.querySelector("#selected_restaurant").textContent = `Selected Restaurant: ${value}`;

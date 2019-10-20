@@ -34,7 +34,7 @@ const addLi = (value, label) => {
 }
 
 addLi(`${subitem}`, `${subitem}`);
-addLi(`${prod_details}`, `${subitem}`);
+addLi(`${prod_details}`, `${prod_details}`);
 addLi(`${weight}`, `Weight: ${weight} kg`);
 addLi(`${market_price}`,`Price: ${market_price}`);
 

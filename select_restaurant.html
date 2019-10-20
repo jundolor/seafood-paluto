@@ -10,16 +10,6 @@
 	<link rel="stylesheet" href="style-menus.css" type="text/css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <style type="text/css">
-table.space {
-  border:1px solid black;
-  border-spacing: 5px 10px;
-  }
-td {
-  border:1px dotted orange;
-  padding: 5px;
-  }
-</style>
 </head>
 <body>
     <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -97,49 +87,76 @@ td {
             </nav><!-- .advanced-nav -->
     	</section><!-- .menu-section -->
         <div class="content">
-            <article class="post-content">
-                <section class="grid-container-2col">
-                    <article id="itmImg" class="grid-item"></article>
-                    <article class="grid-item">
-                        <h3 id="itmName" style="margin-top: 5px; margin-bottom: 5px;"></h3>
-                        <p id="itmKg" style="margin-top: 5px; margin-bottom: 5px;"></p>
-                        <p id="itmTotal" style="margin-top: 5px; margin-bottom: 5px;"></p>
+            <article class="post-content" style="min-width: 40em;">
+                <h2 id="selected_restaurant">Select a Restaurant</h2>
+                <section class="accordion-outer">
+                    <label for="graphic" class="accordion-label">Graphic</label>
+                    <input id="graphic" type="radio" name="nav" class="accordion-radio"  checked>
+                    <article class="accordion-content">
+                        <section class="cards">
+                            <article class="card">
+                                <input type="radio" name="acc-resto" id="acc-resto1" class="radio-image" value="Penang" data-gid="1" checked>
+                                <label for="acc-resto1">
+                                    <img src="images/restaurant/resto1.png">
+                                </label>
+                            </article>
+
+                            <article class="card">
+                                <input type="radio" name="acc-resto" id="acc-resto2" class="radio-image" value="Chinta Kechil" data-gid="2">
+                                <label for="acc-resto2">
+                                    <img src="images/restaurant/resto2.png">
+                                </label>
+                            </article>
+
+                            <article class="card">
+                                <input type="radio" name="acc-resto" id="acc-resto3" class="radio-image" value="New Hongkong" data-gid="3">
+                                <label for="acc-resto3">
+                                    <img src="images/restaurant/resto3.png">
+                                </label>
+                            </article>
+
+                            <article class="card">
+                                <input type="radio" name="acc-resto" id="acc-resto4" class="radio-image" value="Boodle Fight" data-gid="4">
+                                <label for="acc-resto4">
+                                    <img src="images/restaurant/resto4.png">
+                                </label>
+                            </article>
+
+                            <article class="card">
+                                <input type="radio" name="acc-resto" id="acc-resto5" class="radio-image" value="Aling Tonya" data-gid="5">
+                                <label for="acc-resto5">
+                                    <img src="images/restaurant/resto5.png">
+                                </label>
+                            </article>
+
+                            <article class="card">
+                                <input type="radio" name="acc-resto" id="acc-resto6" class="radio-image" value="Seaside" data-gid="6">
+                                <label for="acc-resto6">
+                                    <img src="images/restaurant/resto6.png">
+                                </label>
+                            </article>
+                            
+                        </section>
                     </article>
-                    
-                </section>
-                <section>
-                    <table id="dish-orders"></table>
-                </section>
-                <section>
-                    <p id='computed-paluto'></p>
-                </section>
-                <section>
-                    <button id="add-dish"><i class="fa fa-plus-circle"></i></button>
-                </section>
+
+                    <label for="list" class="accordion-label">List</label>
+                    <input id="list" type="radio" name="nav" class="accordion-radio">
+                    <article class="accordion-content">
+                        <ul style="list-style: none;">
+                            <li><input type="radio" name="list-resto" id="list-resto1" class="radio-list" data-lid="1" checked>Penang</li>
+                            <li><input type="radio" name="list-resto" id="list-resto2" class="radio-list" data-lid="2">Chinta Kechil</li>
+                            <li><input type="radio" name="list-resto" id="list-resto3" class="radio-list" data-lid="3">New Hongkong</li>
+                            <li><input type="radio" name="list-resto" id="list-resto4" class="radio-list" data-lid="4">Boodle Fight</li>
+                            <li><input type="radio" name="list-resto" id="list-resto5" class="radio-list" data-lid="5">Aling Tonya</li>
+                            <li><input type="radio" name="list-resto" id="list-resto6" class="radio-list" data-lid="6">Seaside</li>
+                        </ul>
+                    </article>
+
+                </section><!--.accordion-outer-->
                 <section>
                     <button id="next">Continue to order  <i class="fa fa-arrow-circle-right"></i></button>
                 </section>
-                <dialog id="dialog-select-dish">
-                    <div id="dlgcontent">
-                    <h1>Select a dish</h1>
-                        <section id="cards" class="cards-2col"></section>
-                        <form id="flex-form-dish" class="flex-form form-full">
-                            <section class="form-group">
-                                <ul style="list-style: none;">
-                                    <li><label for="selected-dish">Selected Dish</label></li>
-                                    <li><input type="text" name="selected-dish" id="selected-dish" disabled></li>
-                                    <li><label for="selected-dish">Selected Dish Price</label></li>
-                                    <li><input type="text" name="selected-dish-price" id="selected-dish-price" disabled></li>
-                                    <li><label for="selected-kg">Select Kg</label></li>
-                                    <li><select id="selected-kg"></select></li>
-                                </ul>
-                            </section>
-                        </form>
-                        <button id="okBtn" disabled style="color: red;">OK</button>
-                        <button id="cancelBtn">Cancel</button>
-                    </div>
-                </dialog>
-            </article>
+            </article><!--.post-content-->
             <div class="sidebar">
                 <p>side bar</p>
             </div>
@@ -165,6 +182,6 @@ td {
         </div><!-- .centered -->
     </footer>
     <script src="JS/main.js"></script>
-    <script src="JS/paluto.js?100003"></script>
+    <script src="JS/select_restaurant.js"></script>
 </body>
 </html>

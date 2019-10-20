@@ -32,6 +32,8 @@ const selected_dish_price = document.querySelector('#selected-dish-price');
 const select_kg = document.querySelector('#selected-kg');
 const tbl_dish_order = document.querySelector('#dish-orders');
 
+const btnNext = document.querySelector('#next');
+
 const computed_paluto_disp = document.querySelector('#computed-paluto');
 let computed_paluto =0;
 
@@ -344,3 +346,82 @@ const nextStep = e => {
 		behavior: 'smooth'
 	});
 }
+
+const order_summary_palengke = () => {
+	let ordersObj = Object.create(null);
+	ordersObj.style = 'palengke';
+	ordersObj.item = item;
+	ordersObj.img = img;
+	ordersObj.subitem = subitem;
+	ordersObj.prod_details = prod_details;
+	ordersObj.unit_price = unit_price;
+	ordersObj.weight = weight;
+	ordersObj.market_price = market_price;
+	ordersObj.restaurant = '';
+	ordersObj.paluto = '';
+	ordersObj.paluto_price = '';
+
+	let str = JSON.stringify(ordersObj);
+
+	let orders_url = encodeURI(str);
+
+	window.location.href = `order_summary.html?orders=${orders_url}`;
+};
+
+const select_restaurant = () => {
+	//paluto_arr, if there is excess, add to paluto_arr
+	let kg_market = parseFloat(weight);
+	
+	let kg_total = 0;
+
+	paluto_arr.forEach(dsh => {
+
+
+		let dsh_kg = dsh.dsh_kg;
+
+		kg_total += parseFloat(dsh_kg);
+	});
+
+	if(kg_market != kg_total){
+		let kg_diff = kg_market - kg_total;
+		let dsh_prize = kg_diff * parseFloat(unit_price);
+
+		let objRaw =  Object.create(null);
+
+		objRaw.imgSrc = img;
+		objRaw.dsh_name = subitem;
+		objRaw.dsh_kg = kg_diff;
+		objRaw.si = 'Special Instruction';
+		objRaw.dsh_prize = dsh_prize;
+		
+		paluto_arr.push(objRaw);
+	}
+
+	let paluto = JSON.stringify(paluto_arr);
+
+	let ordersObj = Object.create(null);
+	ordersObj.style = style;
+	ordersObj.item = item;
+	ordersObj.img = img;
+	ordersObj.subitem = subitem;
+	ordersObj.prod_details = prod_details;
+	ordersObj.unit_price = unit_price;
+	ordersObj.weight = weight;
+	ordersObj.market_price = market_price;
+	ordersObj.restaurant = '';
+	ordersObj.paluto = paluto;
+	ordersObj.paluto_price = '';
+
+	let str = JSON.stringify(ordersObj);
+
+	let orders_url = encodeURI(str);
+
+	window.location.href = `select_restaurant.html?orders=${orders_url}`;
+}
+
+btnNext.addEventListener('click', e => {
+	e.preventDefault();
+
+	if(paluto_arr.length == 0) order_summary_palengke();
+	else select_restaurant();
+});
