@@ -169,7 +169,7 @@ body{
 }
 
 .hs-home-bilao{
-  grid-template-columns: repeat(6, calc(60% - var(--gutter) * 2));
+  grid-template-columns: repeat(6, calc(70% - var(--gutter) * 2));
 }
 
 @media screen and (min-width: 60em){
