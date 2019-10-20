@@ -39,8 +39,10 @@ window.onload = () => {
                 let subitem = cursor.value.subitem;
 
                 td1.textContent = subitem;
-                td2.textContent = cursor.value.paluto != "" ? cursor.value.paluto: 'Palengke'
-                td3.textContent = `${cursor.value.weight} Kg`;
+                td2.textContent = cursor.value.paluto != "" ? `${cursor.value.paluto} / ${cursor.value.mode}`: `Palengke / ${cursor.value.mode}`
+                if(cursor.value.weight != '') td3.textContent = `${cursor.value.weight} Kg`;
+                else td3.textContent = ''
+                
                 td4.textContent = cursor.value.market_price;
                 td5.textContent = cursor.value.paluto_price;
 

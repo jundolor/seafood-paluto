@@ -24,19 +24,19 @@ order_img.src = img;
 
 const cart_key = 'cart';
 
-const addLi = value => {
+const addLi = (value, label) => {
 	if (value != ''){
 		let li = document.createElement('li');
-		let txt = document.createTextNode(value);
+		let txt = document.createTextNode(label);
 		li.appendChild(txt);
 		ul_info.appendChild(li);
 	}
 }
 
-addLi(`${subitem}`);
-addLi(`${prod_details}`);
-addLi(`Weight: ${weight} kg`);
-addLi(`Price: ${market_price}`);
+addLi(`${subitem}`, `${subitem}`);
+addLi(`${prod_details}`, `${subitem}`);
+addLi(`${weight}`, `Weight: ${weight} kg`);
+addLi(`${market_price}`,`Price: ${market_price}`);
 
 const initCart = (name, contact, date, time) => {
 	//USE INDEXEDdv

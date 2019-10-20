@@ -35,7 +35,7 @@ const bilao_order = id => {
 	ordersObj.weight = '';
 	ordersObj.market_price = prize;
 	ordersObj.restaurant = '';
-	ordersObj.paluto = '';
+	ordersObj.paluto = 'Bilao';
 	ordersObj.paluto_price = '';
 
 	let str = JSON.stringify(ordersObj);
