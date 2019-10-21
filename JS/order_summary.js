@@ -23,6 +23,40 @@ const order_img = document.querySelector('#order-img');
 
 order_img.src = img;
 
+if(style == 'paluto' && restaurant != ''){
+	const ul_mode = document.querySelector('#flex-form-next section ul');
+
+	ul_mode.innerHTML = '';
+	let li1 = document.createElement('li');
+	let li2 = document.createElement('li');
+
+	let radioInput1 = document.createElement('input');
+	radioInput1.setAttribute('type', 'radio');
+	radioInput1.setAttribute('name', 'mode');
+	radioInput1.setAttribute('value', 'Dine In');
+	radioInput1.checked = true;
+
+	let radioInput2 = document.createElement('input');
+	radioInput2.setAttribute('type', 'radio');
+	radioInput2.setAttribute('name', 'mode');
+	radioInput2.setAttribute('value', 'Delivery');
+
+	let txt1 = document.createTextNode('Dine In');
+	let txt2 = document.createTextNode('Delivery');
+
+	li1.appendChild(radioInput1);
+	li1.appendChild(txt1);
+
+	li2.appendChild(radioInput2);
+	li2.appendChild(txt2);
+
+	ul_mode.appendChild(li1);
+	ul_mode.appendChild(li2);
+
+	const h3_next = document.querySelector('#choose-next h3');
+	h3_next.textContent = 'Dine In or Delivery'
+}
+
 const cart_key = 'cart';
 
 const addLi = (value, label) => {
