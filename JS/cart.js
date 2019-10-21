@@ -17,6 +17,57 @@ window.onload = () => {
 		displayOrders();
 	}
 
+    function displayOrdersPalengke(obj){
+        let id = obj.id;
+        let subitem = obj.subitem;
+        let paluto = obj.paluto;
+        let mode = obj.mode;
+        let weight = obj.weight;
+        let market_price = obj.market_price;
+        let paluto_price = obj.paluto_price
+
+        let tr = document.createElement('tr');
+        tr.dataset.contactId = id;
+
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+        let td5 = document.createElement('td');
+        let td6 = document.createElement('td');
+        let td7 = document.createElement('td');
+
+        td1.textContent = subitem;
+        td2.textContent = paluto != "" ? `${paluto} / ${mode}`: `Palengke / ${mode}`
+        if(weight != '') td3.textContent = `${weight} Kg.`;
+        else td3.textContent = ''
+        
+        td4.textContent = market_price;
+        td5.textContent = paluto_price;
+
+        let total_price = parseFloat(market_price);
+        if(paluto_price != "")  total_price += parseFloat(paluto_price);
+        
+        td6.textContent = total_price;
+
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        td7.appendChild(deleteButton);
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+        tr.appendChild(td7);
+
+        cart.appendChild(tr);
+
+        deleteButton.onclick = deleteItem;
+    }
+
+
 	function displayOrders(){
 		let objectCart = db.transaction('cart').objectStore('cart');
         let ind_order_specifics = document.createDocumentFragment();
@@ -25,62 +76,46 @@ window.onload = () => {
             let cursor = e.target.result;
 
             if(cursor) {
-                let tr = document.createElement('tr');
-                tr.dataset.contactId = cursor.value.id;
 
-                let td1 = document.createElement('td');
-                let td2 = document.createElement('td');
-                let td3 = document.createElement('td');
-                let td4 = document.createElement('td');
-                let td5 = document.createElement('td');
-                let td6 = document.createElement('td');
-                let td7 = document.createElement('td');
-
+                let id = cursor.value.id;
                 let subitem = cursor.value.subitem;
-
-                td1.textContent = subitem;
-                td2.textContent = cursor.value.paluto != "" ? `${cursor.value.paluto} / ${cursor.value.mode}`: `Palengke / ${cursor.value.mode}`
-                if(cursor.value.weight != '') td3.textContent = `${cursor.value.weight} Kg`;
-                else td3.textContent = ''
-                
-                td4.textContent = cursor.value.market_price;
-                td5.textContent = cursor.value.paluto_price;
-
-                let total_price = parseFloat(cursor.value.market_price);
-                if(cursor.value.paluto_price != "")  total_price += parseFloat(cursor.value.paluto_price);
-                
-                td6.textContent = total_price;
-
-                let deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                td7.appendChild(deleteButton);
-
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-                tr.appendChild(td3);
-                tr.appendChild(td4);
-                tr.appendChild(td5);
-                tr.appendChild(td6);
-                tr.appendChild(td7);
-
-                cart.appendChild(tr);
-
-                deleteButton.onclick = deleteItem;
+                let paluto = cursor.value.paluto;
+                let mode = cursor.value.mode;
+                let weight = cursor.value.weight;
+                let market_price = cursor.value.market_price;
+                let paluto_price = cursor.value.paluto_price
 
                 if(cursor.value.style == 'palengke'){
-                    
+                    let obj = Object.create(null);
+                    obj.id = id;
+                    obj.subitem = subitem;
+                    obj.paluto = paluto;
+                    obj.mode = mode;
+                    obj.weight = weight;
+                    obj.market_price = market_price;
+                    obj.paluto_price = paluto_price;
+
+                    displayOrdersPalengke(obj);
+                }
+                else if(cursor.value.style == 'paluto' && cursor.value.restaurant != ''){
+                    let restaurant = cursor.value.restaurant;
+
+                    let obj = Object.create(null);
+                    let paluto_obj = JSON.parse(paluto);
+                    obj.id = id;
+                    if(paluto_obj.style == 'paluto') obj.subitem = `${subitem} / ${paluto_obj.dsh_name}`;
+                    else obj.subitem = `${subitem}`;
+                    obj.paluto = `${restaurant}`;
+                    obj.mode = mode;
+                    obj.weight = `${paluto_obj.dsh_kg} kg`;
+                    obj.market_price = paluto_obj.mkt_prize;
+                    obj.paluto_price = paluto_obj.dsh_prize;
+
+                    displayOrdersPalengke(obj);
                 }
 
                 cursor.continue();
-            } else {
-            	/*
-                if(!list.firstChild) {
-                    let listItem = document.createElement('li');
-                    listItem.textContent = 'No contacts store.';
-                    list.appendChild(listItem);
-                }
-                */
-            }
+            } 
             console.log('orders displayed!!!');
 
         }

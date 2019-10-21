@@ -173,6 +173,7 @@ const insertTableDishOrder = objDish => {
 	let dsh_kg = objDish.dsh_kg;
 	let dsh_si = objDish.si;
 	let dsh_prize = objDish.dsh_prize;
+	let mkt_prize = objDish.mkt_prize;
 
 	let tr = document.createElement('tr');
 
@@ -181,23 +182,28 @@ const insertTableDishOrder = objDish => {
 	let td3 = document.createElement('td');
 	let td4 = document.createElement('td');
 	let td5 = document.createElement('td');
+	let td6 = document.createElement('td');
 
 	let img = document.createElement('img');
 	img.src = dsh_img
 	img.style.width = '50px';
 	img.style.height = 'auto';
 
+	dsh_prize = dsh_prize != '' ? `Php ${dsh_prize}` : '';
+
 	td1.appendChild(img);
 	td2.textContent = dsh_name;
 	td3.textContent = `${dsh_kg} Kg`;
 	td4.textContent = `${dsh_si}`;
-	td5.textContent = `Php ${dsh_prize}`;
+	td5.textContent = `Php ${mkt_prize}`;
+	td6.textContent = dsh_prize;
 
 	tr.appendChild(td1);
 	tr.appendChild(td2);
 	tr.appendChild(td3);
 	tr.appendChild(td4);
 	tr.appendChild(td5);
+	tr.appendChild(td6);
 
 	tbl_dish_order.appendChild(tr);
 };
@@ -206,6 +212,7 @@ const add_dish_order = () => {
 	let dsh_name = selected_dish.value;
 	let dsh_prize = selected_dish_price.value;
 	let dsh_kg = select_kg.value;
+	let mkt_prize = parseFloat(dsh_kg) * parseFloat(unit_price);
 
 	let dsh_selected = document.querySelector('input[name="dish"]:checked').nextSibling.childNodes[0].src;
 	
@@ -214,6 +221,7 @@ const add_dish_order = () => {
 	objDishSelected.dsh_name = dsh_name;
 	objDishSelected.dsh_kg = dsh_kg;
 	objDishSelected.si = 'Special Instruction';
+	objDishSelected.mkt_prize = mkt_prize;
 	objDishSelected.dsh_prize = dsh_prize;
 	objDishSelected.style = style;
 
@@ -223,7 +231,7 @@ const add_dish_order = () => {
 
 	let kg_total = 0;
 
-	tbl_dish_order.innerHTML = '';
+	tbl_dish_order.innerHTML = '<tr><td>&nbsp;</td><td>Dish</td><td>Kg</td><td>Special Instruction</td><td>Market Price</td><td>Paluto price</td></tr>';
 
 	paluto_arr.forEach(dsh => {
 
@@ -236,7 +244,7 @@ const add_dish_order = () => {
 
 	if(kg_market != kg_total){
 		let kg_diff = kg_market - kg_total;
-		let dsh_prize = kg_diff * parseFloat(unit_price);
+		let mkt_prize = kg_diff * parseFloat(unit_price);
 
 		let objRaw =  Object.create(null);
 
@@ -244,7 +252,8 @@ const add_dish_order = () => {
 		objRaw.dsh_name = subitem;
 		objRaw.dsh_kg = kg_diff;
 		objRaw.si = 'Special Instruction';
-		objRaw.dsh_prize = dsh_prize;
+		objRaw.mkt_prize = mkt_prize;
+		objRaw.dsh_prize = '';
 		objRaw.style = 'palengke';
 		insertTableDishOrder(objRaw);
 	}
@@ -386,7 +395,7 @@ const select_restaurant = () => {
 
 	if(kg_market != kg_total){
 		let kg_diff = kg_market - kg_total;
-		let dsh_prize = kg_diff * parseFloat(unit_price);
+		let mkt_prize = kg_diff * parseFloat(unit_price);
 
 		let objRaw =  Object.create(null);
 
@@ -394,7 +403,8 @@ const select_restaurant = () => {
 		objRaw.dsh_name = subitem;
 		objRaw.dsh_kg = kg_diff;
 		objRaw.si = 'Special Instruction';
-		objRaw.dsh_prize = dsh_prize;
+		objRaw.mkt_prize = mkt_prize;
+		objRaw.dsh_prize = '';
 		objRaw.style = 'palengke';
 		
 		paluto_arr.push(objRaw);

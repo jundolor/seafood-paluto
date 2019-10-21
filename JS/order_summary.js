@@ -7,6 +7,7 @@ const item = objOrders.item;
 const img = objOrders.img;
 const subitem = objOrders.subitem;
 const prod_details = objOrders.prod_details;
+const unit_price = objOrders.unit_price;
 const weight = objOrders.weight;
 const market_price = objOrders.market_price;
 const restaurant = objOrders.restaurant;
@@ -35,7 +36,9 @@ const addLi = (value, label) => {
 
 const addLiTable = () => {
 	let table = document.createElement('table');
-	table.id = 'dish-orders'
+	table.id = 'dish-orders';
+
+	table.innerHTML = '<tr><td>&nbsp;</td><td>Dish</td><td>Kg</td><td>Special Instruction</td><td>Market Price</td><td>Paluto price</td></tr>';
 
 	let paluto_arr = JSON.parse(paluto);
 
@@ -44,6 +47,7 @@ const addLiTable = () => {
 		let dsh_name = p.dsh_name;
 		let dsh_kg = p.dsh_kg;
 		let dsh_si = p.si;
+		let mkt_prize = p.mkt_prize
 		let dsh_prize = p.dsh_prize;
 
 		let tr = document.createElement('tr');
@@ -53,23 +57,28 @@ const addLiTable = () => {
 		let td3 = document.createElement('td');
 		let td4 = document.createElement('td');
 		let td5 = document.createElement('td');
+		let td6 = document.createElement('td');
 
 		let img = document.createElement('img');
 		img.src = dsh_img
 		img.style.width = '50px';
 		img.style.height = 'auto';
 
+		dsh_prize = dsh_prize != '' ? `Php ${dsh_prize}` : '';
+
 		td1.appendChild(img);
 		td2.textContent = dsh_name;
 		td3.textContent = `${dsh_kg} Kg`;
 		td4.textContent = `${dsh_si}`;
-		td5.textContent = `Php ${dsh_prize}`;
+		td5.textContent = `Php ${mkt_prize}`;
+		td6.textContent = dsh_prize;
 
 		tr.appendChild(td1);
 		tr.appendChild(td2);
 		tr.appendChild(td3);
 		tr.appendChild(td4);
 		tr.appendChild(td5);
+		tr.appendChild(td6);
 
 		table.appendChild(tr);
 	});
@@ -128,11 +137,13 @@ window.onload = () => {
 		objectCart.createIndex('mode', 'mode', {unique:false});
 		objectCart.createIndex('details', 'details', {unique:false});
 		objectCart.createIndex('paluto_price', 'paluto_price', {unique:false});
+		objectCart.createIndex('paluto_details', 'paluto_price', {unique:false});
 
 
 		console.log("Database setup is complete");
 	}
 
+	
 	function addData(){
 
 		let mode = document.querySelector('input[name="mode"]:checked').value;
@@ -175,16 +186,55 @@ window.onload = () => {
 		}
 	}
 
+	function addDataPalutoRestaurant(){
+		let mode = document.querySelector('input[name="mode"]:checked').value;
+
+		let details = Object.create(null);
+		details.name = document.querySelector('#name').value;
+		details.contact = document.querySelector('#contact').value;
+		details.date = document.querySelector('#date').value;
+		details.time = document.querySelector('#time').value;
+
+		let paluto_arr = JSON.parse(paluto);
+
+		paluto_arr.forEach(p => {
+			let newOrder = Object.create(null);
+			newOrder.style = style;
+			newOrder.item = item;
+			newOrder.subitem = subitem;
+			newOrder.prod_details = prod_details;
+			newOrder.weight = weight;
+			newOrder.market_price = market_price;
+			newOrder.restaurant = restaurant;
+			newOrder.paluto = JSON.stringify(p);
+			newOrder.mode = mode;
+			newOrder.details = details;
+			newOrder.paluto_price = paluto_price;
+
+			let transaction = db.transaction(['cart'], 'readwrite');
+			let objectCart = transaction.objectStore('cart');
+			let request = objectCart.add(newOrder);
+
+			request.onsuccess = () => {
+				console.log("Added");
+			}
+
+			transaction.oncomplete = () => {
+				console.log('transaction completed');
+
+				window.location.href = 'cart.html';
+			}
+
+			transaction.onerror = () => {
+				console.log('transaction not completed, error!!!');
+			}
+		});
+	}
+
 	btnNext.addEventListener('click', e => {
 		e.preventDefault();
-		addData();
-
-		if(style == 'palengke'){
-			addData();
-		}
-		else if(style == 'paluto' && restaurant != ''){
-			//addLiTable()
-		}
+		if(style == 'palengke')	addData();
+		else if(style == 'paluto' && restaurant != '') addDataPalutoRestaurant()
 	});
 }
 
