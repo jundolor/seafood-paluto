@@ -65,6 +65,9 @@ window.onload = () => {
 
         cart.appendChild(tr);
 
+        let objID = Object.create(null);
+        obj.id = id;
+
         deleteButton.onclick = deleteItem;
     }
 
@@ -137,6 +140,7 @@ window.onload = () => {
     }
 
     const clear_cart = () => {
+        /*
     	let objectCart = db.transaction('cart').objectStore('cart');
 
     	objectCart.openCursor().onsuccess = function(e){
@@ -146,12 +150,27 @@ window.onload = () => {
     			let cartId = cursor.value.id;
 
     			let transaction = db.transaction(['cart'], 'readwrite');
-		        let objectCart = transaction.objectStore('cart');
-		        let request = objectCart.delete(cartId);
+		        let objectToDelete = transaction.objectStore('cart');
+		        let request = objectToDelete.delete(cartId);
+
+                transaction.oncomplete = () => {
+                    console.log(`cart ${cartId} is deleted!`);
+                }
 
     			cursor.continue();
     		}
     	}
+        */
+
+        let objectCart = db.transaction('cart').objectStore('cart');
+
+        let transaction = db.transaction(['cart'], 'readwrite');
+        let objectToDelete = transaction.objectStore('cart');
+
+        objectToDelete.clear().onsuccess = function(e){
+            console.log(`the cart is clear!`);
+        }
+        
     }
 
     const clear_card = () => {
