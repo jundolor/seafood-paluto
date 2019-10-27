@@ -156,8 +156,8 @@ window.onload = () => {
 
     const clear_card = () => {
     	document.querySelector('#card-number').value = '';
-    	document.querySelector('#expiry').value = '';
-    	document.querySelector('#vn').value = '';
+    	//document.querySelector('#expiry').value = '';
+    	document.querySelector('#cvn').value = '';
     }
 
     document.getElementById("okBtn").addEventListener("click", function () {
