@@ -98,6 +98,26 @@ section.form-group {
 	/*transition: max-height 2s ease-out;*/
 }
 
+.register-form {
+	line-height: 1.4;
+}
+
+.register-form {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -2em;
+}
+
+.form-checkout {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.form-checkout li {
+	width: 160px;
+}
+
 @media screen and (min-width: 52em){
 	blockquote{
     	font-size: 3em;
@@ -234,7 +254,7 @@ dialog {
     
 }
 
-#dialog-select-dish{
+#dialog-select-dish, #dialog-card{
 	width: 70%;
 }
 

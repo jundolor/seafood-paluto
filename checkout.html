@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Seafood Paluto Restaurants</title>
+	<meta name="description" content="Place your seafood. We also deliver right to your doorstep">	
+
+	<link rel="stylesheet" href="style-menus.css" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style type="text/css">
+table.space {
+  border:1px solid black;
+  border-spacing: 5px 10px;
+  }
+td {
+  border:1px dotted orange;
+  padding: 5px;
+  }
+</style>
+</head>
+<body>
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+    <header class="masthead clear">
+        <div class="centered">
+            <div class="site-branding">
+                <h1 class="site-title">&nbsp;</h1>
+            </div><!-- .site-title -->
+        </div><!-- .centered -->
+    </header><!-- .masthead -->
+
+    <main class="main-area">
+    	<section class="menu-section">
+    		<nav id="advanced-nav" class="advanced-nav menu" role="navigation">
+                <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul>
+                        <li>
+                            <a href="index.html">
+                                <div class="icon">
+                                    <i class="fa fa-home"></i>
+                                </div>
+                                <div class="button-text">
+                                    Home
+                                    <span>is where the heart is</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="palengke.html">
+                                <div class="icon">
+                                    <i class="fa fa-file-text-o"></i>
+                                </div>
+                                <div class="button-text">
+                                    Menu
+                                    <span>dishes to delight your taste</span>
+                                </div>
+                            </a>
+                        </li>
+      
+                        <li>
+                            <a href="padeliver.html">
+                                <div class="icon">
+                                    <i class="fa fa-cart-plus"></i>
+                                </div>
+                                <div class="button-text">
+                                    Market
+                                    <span>fresh choice to select from</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="news.html">
+                                <div class="icon">
+                                    <i class="fa fa-newspaper-o"></i>
+                                </div>
+                                <div class="button-text">
+                                    About
+                                    <span>know more about us</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="news.html">
+                                <div class="icon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div class="button-text">
+                                    Store Locator
+                                    <span>find where we are</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+            </nav><!-- .advanced-nav -->
+    	</section><!-- .menu-section -->
+        <div class="content">
+            <article class="post-content">
+                <section>
+                    <h2>Checkout</h2>
+                </section>
+                <section>
+                    <h3>Step 1: Billing</h3>
+                    <form class="flex-form form-full">
+                        <section class="form-group">
+                            <ul style="list-style: none;">
+                                <li><label for="address">Enter Billing/ Shipping Address</label></li>
+                                <li><input type="text" name="address" id="address" size="40"></li>
+                            </ul>
+                        </section>
+                    </form>
+                </section>
+                <section>
+                    <h3>Step 2: Payment Method</h3>
+                    <form class="flex-form form-full">
+                        <section class="form-group">
+                            <ul style="list-style: none;">
+                                <li><input type="radio" id="card" value="card" name="payment" checked> <label for="card">Card</label></li>
+                                <li><input type="radio" id="cod" value="cod" name="payment"> <label for="cod">Cash On Delivery</label></li>
+                            </ul>
+                        </section>
+                    </form>
+                </section>
+                <section>
+                    <h3>Confirm Order</h3>
+                    <table id="cart" cellpadding="5" style="font-size: 0.8em;border-spacing: 10px;border-collapse: collapse;">
+                        <tr valign="top">
+                            <td>Market</td>
+                            <td>Paluto/ Pa Deliver</td>
+                            <td>Weight</td>
+                            <td>Total Market</td>
+                            <td>Total Paluto</td>
+                            <td>Total Deliver/ Restaurant</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <button id="confirm-order">Confirm Order  <i class="fa fa-arrow-circle-right"></i>
+                </section>
+                <dialog id="dialog-card">
+                    <div id="dlgcontent">
+                        <h1>Enter Card Details</h1>
+                        <form id="flex-form-card" class="flex-form form-full">
+                            <section id="form-group">
+                                <ul style="list-style: none;">
+                                    <li><label for="card-number">Card Number</label></li>
+                                    <li><input type="text" name="card-number" id="card-number"></li>
+                                    <li><label for="expiry">Expiry Date</label></li>
+                                    <li><input type="date" name="expiry" id="expiry"></li>
+                                    <li><label for="cvn">Card Veriication Number</label></li>
+                                    <li><input type="text" name="cvn" id="cvn"></li>
+                                </ul>
+                            </section>
+                        </form>
+                        <button id="okBtn">OK</button>
+                        <button id="cancelBtn">Cancel</button>
+                    </div>
+                </dialog>
+            </article>
+            <div class="sidebar">
+                <p>side bar</p>
+            </div>
+        </div>
+        <div class="centered">
+            
+        </div><!-- .centered -->
+    	
+    </main><!-- .main-area -->
+    <footer class="footer-area">
+        <div class="centered">
+            <nav id="secondary-menu" class="single-nav menu" role="navigation">
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </nav>
+            <section id="footer-text">
+                <p>&copy; All rights reserved | Seafood Paluto Restaurant</p>
+                
+            </section>
+        </div><!-- .centered -->
+    </footer>
+    <script src="JS/main.js"></script>
+    <script src="JS/checkout.js?10001"></script>
+</body>
+</html>
