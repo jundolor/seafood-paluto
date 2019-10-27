@@ -1,6 +1,7 @@
 let db;
 const cart = document.querySelector('#cart');
 const order_specifics = document.querySelector('#order-specifics');
+const checkout = document.querySelector('#checkout');
 
 window.onload = () => {
 	let request = window.indexedDB.open('cart', 1);
@@ -133,13 +134,10 @@ window.onload = () => {
             e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
 
             console.log(`cart ${cartId} is deleted!`);
-            /*
-            if(!list.firstChild) {
-                let listItem = document.createElement('li');
-                listItem.textContent = 'No contacts store.';
-                list.appendChild(listItem);
-            }
-            */
         }
     }
+
+    checkout.addEventListener('click', e => {
+        window.location.href = 'checkout.html';
+    });
 }
