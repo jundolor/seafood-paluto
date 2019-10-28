@@ -30,6 +30,7 @@ let weight_limit = parseFloat(weight);
 const selected_dish = document.querySelector('#selected-dish');
 const selected_dish_price = document.querySelector('#selected-dish-price');
 const select_kg = document.querySelector('#selected-kg');
+const special_instruction = document.querySelector('#special-instruction');
 const tbl_dish_order = document.querySelector('#dish-orders');
 
 const btnNext = document.querySelector('#next');
@@ -212,6 +213,7 @@ const add_dish_order = () => {
 	let dsh_name = selected_dish.value;
 	let dsh_prize = selected_dish_price.value;
 	let dsh_kg = select_kg.value;
+	let si = special_instruction.value;
 	let mkt_prize = parseFloat(dsh_kg) * parseFloat(unit_price);
 
 	let dsh_selected = document.querySelector('input[name="dish"]:checked').nextSibling.childNodes[0].src;
@@ -220,7 +222,7 @@ const add_dish_order = () => {
 	objDishSelected.imgSrc = dsh_selected;
 	objDishSelected.dsh_name = dsh_name;
 	objDishSelected.dsh_kg = dsh_kg;
-	objDishSelected.si = 'Special Instruction';
+	objDishSelected.si = si;
 	objDishSelected.mkt_prize = mkt_prize;
 	objDishSelected.dsh_prize = dsh_prize;
 	objDishSelected.style = style;
@@ -251,7 +253,7 @@ const add_dish_order = () => {
 		objRaw.imgSrc = img;
 		objRaw.dsh_name = subitem;
 		objRaw.dsh_kg = kg_diff;
-		objRaw.si = 'Special Instruction';
+		objRaw.si = '';
 		objRaw.mkt_prize = mkt_prize;
 		objRaw.dsh_prize = '';
 		objRaw.style = 'palengke';
@@ -315,6 +317,7 @@ const reset_dialog = () => {
 	selected_dish.value = '';
 	selected_dish_price.value = '';
 	select_kg.innerHTML = '';
+	special_instruction.value = '';
 
 	for(i = 0.5; i <= weight_limit; i += 0.5){
 		let opt = document.createElement('option');
@@ -402,7 +405,7 @@ const select_restaurant = () => {
 		objRaw.imgSrc = img;
 		objRaw.dsh_name = subitem;
 		objRaw.dsh_kg = kg_diff;
-		objRaw.si = 'Special Instruction';
+		objRaw.si = '';
 		objRaw.mkt_prize = mkt_prize;
 		objRaw.dsh_prize = '';
 		objRaw.style = 'palengke';
