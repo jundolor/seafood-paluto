@@ -47,3 +47,6 @@ btnNext.addEventListener('click', e => {
 
 	window.location.href = `order_summary.html?orders=${orders_url}`;
 });
+
+const reso =document.querySelector('#restaurant-choice');
+document.querySelector('#centered').textContent = `test width ${reso.style.width}`;
