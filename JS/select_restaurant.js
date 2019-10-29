@@ -48,5 +48,5 @@ btnNext.addEventListener('click', e => {
 	window.location.href = `order_summary.html?orders=${orders_url}`;
 });
 
-const reso =document.querySelector('#restaurant-choice').offsetWidth;
-document.querySelector('#debug').textContent = `test width ${reso}`;
+//const reso =document.querySelector('#restaurant-choice').offsetWidth;
+//document.querySelector('#debug').textContent = `test width ${reso}`;
