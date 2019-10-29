@@ -10,16 +10,6 @@
 	<link rel="stylesheet" href="style-menus.css" type="text/css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <style type="text/css">
-table.space {
-  border:1px solid black;
-  border-spacing: 5px 10px;
-  }
-td {
-  border:1px dotted orange;
-  padding: 5px;
-  }
-</style>
 </head>
 <body>
     <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -125,17 +115,19 @@ td {
                 </section>
                 <section>
                     <h3>Confirm Order</h3>
-                    <table id="cart" cellpadding="5" style="font-size: 0.8em;border-spacing: 10px;border-collapse: collapse;">
-                        <tr valign="top">
-                            <td>Market</td>
-                            <td>Paluto/ Pa Deliver</td>
-                            <td>Weight</td>
-                            <td>Total Market</td>
-                            <td>Total Paluto</td>
-                            <td>Total Deliver/ Restaurant</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
+                    <div style="overflow-x:auto;">
+                        <table id="cart" cellpadding="5" class="standard-table">
+                            <tr valign="top">
+                                <td>Market</td>
+                                <td>Paluto/ Pa Deliver</td>
+                                <td>Weight</td>
+                                <td>Total Market</td>
+                                <td>Total Paluto</td>
+                                <td>Total Deliver/ Restaurant</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
                     <button id="confirm-order">Confirm Order  <i class="fa fa-arrow-circle-right"></i>
                 </section>
                 <dialog id="dialog-card">

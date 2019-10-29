@@ -71,6 +71,7 @@ const addLi = (value, label) => {
 const addLiTable = () => {
 	let table = document.createElement('table');
 	table.id = 'dish-orders';
+	table.classList.add('standard-table');
 
 	table.innerHTML = '<tr><td>&nbsp;</td><td>Dish</td><td>Kg</td><td>Special Instruction</td><td>Market Price</td><td>Paluto price</td></tr>';
 
@@ -118,7 +119,11 @@ const addLiTable = () => {
 	});
 
 	let li = document.createElement('li');
-	li.appendChild(table);
+	let div = document.createElement('div');
+	div.style.overflowX = 'auto';
+
+	div.appendChild(table);
+	li.appendChild(div);
 	ul_info.appendChild(li);
 }
 

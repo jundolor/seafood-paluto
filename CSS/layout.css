@@ -284,6 +284,17 @@ dialog::backdrop {
 	width: 12em;
 }
 
+.standard-table{
+	font-size: 0.8em;
+	border-spacing: 10px;
+	border-collapse: collapse;
+}
+
+.standard-table td{
+	border:1px dotted orange;
+  	padding: 5px;
+}
+
 @media screen and (min-width: 52em){
 	#dialog-select-dish{
     	width: 40%;
