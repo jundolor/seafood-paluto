@@ -13,7 +13,7 @@ body {
 	color: white;
 }
 
-.card, .card-2col, .card-choice, .card-1col {
+.card, .card-2col, .card-choice, .card-1col, .card-4col {
 	background: white;
 	margin-bottom: 2em;	
 }
@@ -22,12 +22,12 @@ body {
   min-width: 100%;
 }
 */
-.card a, .card-2col a, .card-choice a, .card-1col a {
+.card a, .card-2col a, .card-choice a, .card-1col a, .card-4col a {
 	color: black;
 	text-decoration: none;
 }
 
-.card a:hover, .card-2col a:hover, .card-choice a:hover, ul.hs li:hover, ul.hs-home-bilao li:hover{
+.card a:hover, .card-2col a:hover, .card-choice a:hover, ul.hs li:hover, ul.hs-home-bilao li:hover, .card-4col a:hover{
 	box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
 }
 
@@ -39,18 +39,18 @@ ul.hs li:hover, ul.hs-home-bilao li:hover{
   cursor: pointer;
 }
 
-.card-content, .card-2col-content, .card-choice-content, .card-1col-content {
+.card-content, .card-2col-content, .card-choice-content, .card-1col-content, .card-4col-content {
 	padding: 1.4em;
 }
 
 
-.card-content h2, .card-2col-content h2, .card-choice-content h2,.card-1col-content h2 {
+.card-content h2, .card-2col-content h2, .card-choice-content h2,.card-1col-content h2, .card-4col-content h2 {
 	margin-top: 0;
 	margin-bottom: .5em;
 	font-weight: normal;
 }
 
-.card-content p, .card-2col-content p, .card-choice-content p, .card-1col-content p, .card-1col-content p {
+.card-content p, .card-2col-content p, .card-choice-content p, .card-1col-content p, .card-1col-content p, .card-4col-content p {
 	font-size: 95%;
 }
 
@@ -62,14 +62,14 @@ ul.hs li:hover, ul.hs-home-bilao li:hover{
 
     }
 @media screen and (min-width: 40em) {
-    .cards, .cards-2col, .cards-choice {
+    .cards, .cards-2col, .cards-choice, .cards-4col {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         margin-top: -1em;
     }
 
-    .card, .card-2col, .card-choice {
+    .card, .card-2col, .card-choice, .card-4col {
         display: flex;
         flex: 0 1 calc(50% - .5em);
         margin-bottom: 1em;
@@ -77,7 +77,7 @@ ul.hs li:hover, ul.hs-home-bilao li:hover{
 }
 
 @media screen and (min-width: 60em) {
-    .cards {
+    .cards, .cards-4col {
         margin-top: inherit;
     }
     
@@ -97,7 +97,7 @@ ul.hs li:hover, ul.hs-home-bilao li:hover{
         margin-bottom: 2em;
     }
 
-    .card-choice{
+    .card-choice, .card-4col{
         flex: 0 1 calc(25% - 0.5em);
         margin-bottom: 2em;
     }
@@ -114,7 +114,7 @@ ul.hs li:hover, ul.hs-home-bilao li:hover{
     /*transition: max-height 3s ease-out;*/
 }
 
-section.cards, section.cards-2col, section.cards-choice {
+section.cards, section.cards-2col, section.cards-choice, section.cards-4col {
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
