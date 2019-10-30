@@ -1,4 +1,5 @@
 const bilao = document.querySelector('#bilao');
+const bilao_class = document.querySelectorAll('.bilao');
 
 (function(){
 	fetch('JS/json/bilao.json')
@@ -87,3 +88,11 @@ const populate_bilao = data => {
 		li.addEventListener('click', () => {bilao_order(id)});
 	})
 };
+
+bilao_class.forEach(bil => {
+	bil.addEventListener('click', e => {
+		e.preventDefault()
+
+		bilao_order(bil.id);
+	});
+});
