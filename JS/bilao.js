@@ -96,3 +96,10 @@ bilao_class.forEach(bil => {
 		bilao_order(bil.id);
 	});
 });
+
+document.querySelector('#quote').addEventListener('click', e => {
+	let bilao_horiz = document.querySelector('#bilao-horiz');
+
+	if(bilao_horiz.style.display == 'none') bilao_horiz.style.display = 'block';
+	else bilao_horiz.style.display = 'none';
+});
