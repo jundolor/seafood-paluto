@@ -126,3 +126,9 @@ const init_radio_img_list = () => {
 		})
 	});
 }
+
+document.querySelector('div.site-branding h1.site-title').addEventListener('click', e => {
+	e.preventDefault();
+
+	window.location.href = 'index.html';
+})
