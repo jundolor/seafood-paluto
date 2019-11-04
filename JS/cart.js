@@ -108,7 +108,7 @@ window.onload = () => {
                     else obj.subitem = `${subitem}`;
                     obj.paluto = `${restaurant}`;
                     obj.mode = mode;
-                    obj.weight = `${paluto_obj.dsh_kg} kg`;
+                    obj.weight = `${paluto_obj.dsh_kg}`;
                     obj.market_price = paluto_obj.mkt_prize;
                     obj.paluto_price = paluto_obj.dsh_prize;
 
